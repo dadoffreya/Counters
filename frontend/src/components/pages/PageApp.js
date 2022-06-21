@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import Navbar from '../Navbar';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
+import TextField from '@mui/material/TextField';
 // import CardContent from '@mui/material/CardContent'
 // import Button from '@mui/material/Button';
 // import HorizontalRuleOutlinedIcon from '@mui/icons-material/HorizontalRuleOutlined';
-// import TextField from '@mui/material/TextField';
 // import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -25,6 +25,7 @@ import HorizontalRuleOutlinedIcon from '@mui/icons-material/HorizontalRuleOutlin
 import IconButton from '@mui/material/IconButton'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Stack from '@mui/material/Stack';
+
 
 // import DefectsButton1 from './DefectsButton1';
 // import DefectsButton2 from './DefectsButton2';
@@ -103,6 +104,17 @@ const PageApp = () => {
   const [counttrimming, setCountTrimming] = useState(0);
   const [countbrokenstitch, setCountBrokenStitch] = useState(0);
 
+  // Data Footwear Style
+  const footwearstyle = [
+    {
+      id: '1',
+      style: '540 Jr Boy Blue green'
+    },
+    {
+      id: '2',
+      style: '540 Jr Boy Navy red'
+    },
+  ];
 
   return (
     <div>
@@ -116,7 +128,13 @@ const PageApp = () => {
           justifyContent='center'
         >
           <Card sx={{backgroundColor: '#fffffe'}}>
-            <CardHeader title="Defect" sx={{textAlign: 'center', mb: -3.5}}/>
+            <CardHeader title="Inspection" sx={{textAlign: 'center', mb: -1.5}}/>
+            <Stack direction='row' spacing={0}>
+              <Grid container spacing={0} sx={{justifyContent: 'center', alignItems: 'center'}}>
+                <TextField id="outlined-basic" label="Footwear Style" variant="outlined" sx={{mx: 0.5}}/>
+                <TextField id="outlined-basic" label="Qty Output" variant="outlined" type='number' sx={{mx: 0.5}}/>
+              </Grid>
+            </Stack>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs" centered sx={{mb: 0}}>
               <Tab label="Category 1" {...a11yProps(0)} />
               <Tab label="Category 2" {...a11yProps(1)} />
@@ -154,12 +172,12 @@ const PageApp = () => {
                             Total: {countbonding}
                             </Button>
                             <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountBonding(countbonding - 1)} disabled={countbonding === 0} >
+                              <IconButton aria-label="reset" color="error" onClick={() => setCountBonding(countbonding - 1)} disabled={countbonding === 0} >
                                 <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountBonding(0)} >
+                              </IconButton>
+                              <IconButton aria-label="reset" color="warning" onClick={() => setCountBonding(0)} >
                                 <RestartAltIcon />
-                            </IconButton>
+                              </IconButton>
                             </Stack>
                         </Grid>
                     </Card>
@@ -773,7 +791,6 @@ const PageApp = () => {
             </TabPanel>
             <TabPanel value={value} index={2}>
                {/* Deffect Button 2 */}
-
               <CardContent sx={{mt: -3, mb: -2}}>
                   <Grid 
                       container 
