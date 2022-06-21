@@ -25,14 +25,11 @@ import HorizontalRuleOutlinedIcon from '@mui/icons-material/HorizontalRuleOutlin
 import IconButton from '@mui/material/IconButton'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Stack from '@mui/material/Stack';
+import MenuItem from '@mui/material/MenuItem';
 
-
-// import DefectsButton1 from './DefectsButton1';
-// import DefectsButton2 from './DefectsButton2';
-// import DefectsButton3 from './DefectsButton3';
 
   // const [date, setDate] = React.useState(null);
-  // const [qtyoutput, setQtyOutput] = useState(0);
+  
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -104,7 +101,17 @@ const PageApp = () => {
   const [counttrimming, setCountTrimming] = useState(0);
   const [countbrokenstitch, setCountBrokenStitch] = useState(0);
 
+  // State Qty Output
+  const [qtyoutput, setQtyOutput] = useState(0);
+  const handleQtyOutput = (event) => {
+    setQtyOutput(event.target.value);
+  };
+
   // Data Footwear Style
+  const [footwear, setFootwear] = useState("");
+  const handleChangeFootwear = (event) => {
+    setFootwear(event.target.value);
+  };
   const footwearstyle = [
     {
       id: '1',
@@ -116,10 +123,30 @@ const PageApp = () => {
     },
   ];
 
+  // Data Line
+  const [noline, setNoLine] = useState('');
+  const handleChangeLine = (event) => {
+    setNoLine(event.target.value);
+  };
+  const line = [
+    {
+      id: '1',
+      label: 'Line 1'
+    },
+    {
+      id: '2',
+      label: 'Line 2'
+    },
+    {
+      id: '3',
+      label: 'Line 3'
+    },
+  ]
+
   return (
     <div>
       <Navbar />
-      <Container maxWidth="100vw" sx={{ mt: 0.5, backgroundColor: '#ffffff', p: 1, borderRadius: 0 }}>
+      <Container maxWidth="100vw" sx={{ mt: 0.5, backgroundColor: '#fffeee', p: 1, borderRadius: 0 }}>
         <Grid 
           container 
           spacing={0}
@@ -128,13 +155,66 @@ const PageApp = () => {
           justifyContent='center'
         >
           <Card sx={{backgroundColor: '#fffffe'}}>
-            <CardHeader title="Inspection" sx={{textAlign: 'center', mb: -1.5}}/>
-            <Stack direction='row' spacing={0}>
-              <Grid container spacing={0} sx={{justifyContent: 'center', alignItems: 'center'}}>
-                <TextField id="outlined-basic" label="Footwear Style" variant="outlined" sx={{mx: 0.5}}/>
-                <TextField id="outlined-basic" label="Qty Output" variant="outlined" type='number' sx={{mx: 0.5}}/>
+            <CardContent sx={{mt:1}}>
+              <Grid 
+                  container 
+                  spacing={1}
+                  direction='row'
+                  alignItems='center'
+                  justifyContent='center'
+              >
+                <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': {width: '25ch' }, ml: 1
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  
+                  <TextField 
+                    id="outlined-basic" 
+                    select
+                    value={noline}
+                    onChange={handleChangeLine}
+                    label="Line Number" 
+                    variant="outlined"
+                    sx={{mx: '0.5'}}
+                  >
+                    {line.map((option) => (
+                      <MenuItem key={option.id} value={option.id}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                  <TextField 
+                    id="outlined-basic" 
+                    select
+                    value={footwear}
+                    onChange={handleChangeFootwear}
+                    label="Style" 
+                    variant="outlined"
+                    sx={{mx: '0.5'}}
+                  >
+                    {footwearstyle.map((option) => (
+                      <MenuItem key={option.id} value={option.id}>
+                        {option.style}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                  <TextField 
+                    id="outlined-basic" 
+                    type="number"
+                    value={qtyoutput}
+                    onChange={handleQtyOutput}
+                    label="Qty Output" 
+                    variant="outlined"
+                    sx={{mx: '0.5'}}
+                  />
+                </Box>
               </Grid>
-            </Stack>
+            </CardContent>
+            <CardHeader title="Inspection" sx={{textAlign: 'center', mb: -1.5}}/>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs" centered sx={{mb: 0}}>
               <Tab label="Category 1" {...a11yProps(0)} />
               <Tab label="Category 2" {...a11yProps(1)} />
@@ -145,11 +225,11 @@ const PageApp = () => {
               {/* Deffect Button 1 */}
               <CardContent sx={{mt: -3, mb: -2}}>
                 <Grid 
-                    container 
-                    spacing={1}
-                    direction='row'
-                    alignItems='center'
-                    justifyContent='center'
+                  container 
+                  spacing={1}
+                  direction='row'
+                  alignItems='center'
+                  justifyContent='center'
                 >
                     <Card sx={{m: 0.25}}>
                         <Grid 
@@ -305,162 +385,162 @@ const PageApp = () => {
               </CardContent>
               <CardContent>
                 <Grid 
-                    container 
-                    spacing={1}
-                    direction='row'
-                    alignItems='center'
-                    justifyContent='space-between'
+                  container 
+                  spacing={1}
+                  direction='row'
+                  alignItems='center'
+                  justifyContent='space-between'
                 >
-                    <Card sx={{m: 0.25}}>
-                        <Grid 
-                            container
-                            spacing={0}
-                            direction='column'
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            <Button 
-                            variant="contained" 
-                            sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                            onClick={() => setCountLogoNOK(countlogonok + 1)}
-                            >
-                            #6
-                            <br/>
-                            Logo NOK
-                            </Button>
-                            <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                            Total: {countlogonok}
-                            </Button>
-                            <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountLogoNOK(countlogonok - 1)} disabled={countlogonok === 0} >
-                                <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountLogoNOK(0)} >
-                                <RestartAltIcon />
-                            </IconButton>
-                            </Stack>
-                        </Grid>
-                    </Card>
-                    <Card sx={{m: 0.25}}>
-                        <Grid 
-                            container
-                            spacing={0}
-                            direction='column'
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            <Button 
-                            variant="contained" 
-                            sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                            onClick={() => setCountBlooming(countblooming + 1)}
-                            >
-                            #7
-                            <br/>
-                            Blooming
-                            </Button>
-                            <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                            Total: {countblooming}
-                            </Button>
-                            <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountBlooming(countblooming - 1)} disabled={countblooming === 0} >
-                                <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountBlooming(0)} >
-                                <RestartAltIcon />
-                            </IconButton>
-                            </Stack>
-                        </Grid>
-                    </Card>
-                    <Card sx={{m: 0.25}}>
-                        <Grid 
-                            container
-                            spacing={0}
-                            direction='column'
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            <Button 
-                            variant="contained" 
-                            sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                            onClick={() => setCountMargin(countmargin + 1)}
-                            >
-                            #8
-                            <br/>
-                            Margin
-                            </Button>
-                            <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                            Total: {countmargin}
-                            </Button>
-                            <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountMargin(countmargin - 1)} disabled={countmargin === 0} >
-                                <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountMargin(0)} >
-                                <RestartAltIcon />
-                            </IconButton>
-                            </Stack>
-                        </Grid>
-                    </Card>
-                    <Card sx={{m: 0.25}}>
-                        <Grid 
-                            container
-                            spacing={0}
-                            direction='column'
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            <Button 
-                            variant="contained" 
-                            sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                            onClick={() => setCountWrinkle(countwrinkle + 1)}
-                            >
-                            #9
-                            <br/>
-                            Wrinkle
-                            </Button>
-                            <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                            Total: {countwrinkle}
-                            </Button>
-                            <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountWrinkle(countwrinkle - 1)} disabled={countwrinkle === 0} >
-                                <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountWrinkle(0)} >
-                                <RestartAltIcon />
-                            </IconButton>
-                            </Stack>
-                        </Grid>
-                    </Card>
-                    <Card sx={{m: 0.25}}>
-                        <Grid 
-                            container
-                            spacing={0}
-                            direction='column'
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            <Button 
-                            variant="contained" 
-                            sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                            onClick={() => setCountUpperKotor(countupperkotor + 1)}
-                            >
-                            #10
-                            <br/>
-                            Upper Kotor
-                            </Button>
-                            <Button variant="outlined" sx={{mt: 0.5, mb: 1, fontColor: 'black'}} disabled>
-                            Total: {countupperkotor}
-                            </Button>
-                            <Stack direction='row'>
-                            <IconButton aria-label="reset" color="error" onClick={() => setCountUpperKotor(countupperkotor - 1)} disabled={countupperkotor === 0} >
-                                <HorizontalRuleOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="reset" color="warning" onClick={() => setCountUpperKotor(0)} >
-                                <RestartAltIcon />
-                            </IconButton>
-                            </Stack>
-                        </Grid>
-                    </Card>
+                  <Card sx={{m: 0.25}}>
+                      <Grid 
+                          container
+                          spacing={0}
+                          direction='column'
+                          alignItems='center'
+                          justifyContent='center'
+                      >
+                          <Button 
+                          variant="contained" 
+                          sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                          onClick={() => setCountLogoNOK(countlogonok + 1)}
+                          >
+                          #6
+                          <br/>
+                          Logo NOK
+                          </Button>
+                          <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
+                          Total: {countlogonok}
+                          </Button>
+                          <Stack direction='row'>
+                          <IconButton aria-label="reset" color="error" onClick={() => setCountLogoNOK(countlogonok - 1)} disabled={countlogonok === 0} >
+                              <HorizontalRuleOutlinedIcon />
+                          </IconButton>
+                          <IconButton aria-label="reset" color="warning" onClick={() => setCountLogoNOK(0)} >
+                              <RestartAltIcon />
+                          </IconButton>
+                          </Stack>
+                      </Grid>
+                  </Card>
+                  <Card sx={{m: 0.25}}>
+                      <Grid 
+                          container
+                          spacing={0}
+                          direction='column'
+                          alignItems='center'
+                          justifyContent='center'
+                      >
+                          <Button 
+                          variant="contained" 
+                          sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                          onClick={() => setCountBlooming(countblooming + 1)}
+                          >
+                          #7
+                          <br/>
+                          Blooming
+                          </Button>
+                          <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
+                          Total: {countblooming}
+                          </Button>
+                          <Stack direction='row'>
+                          <IconButton aria-label="reset" color="error" onClick={() => setCountBlooming(countblooming - 1)} disabled={countblooming === 0} >
+                              <HorizontalRuleOutlinedIcon />
+                          </IconButton>
+                          <IconButton aria-label="reset" color="warning" onClick={() => setCountBlooming(0)} >
+                              <RestartAltIcon />
+                          </IconButton>
+                          </Stack>
+                      </Grid>
+                  </Card>
+                  <Card sx={{m: 0.25}}>
+                      <Grid 
+                          container
+                          spacing={0}
+                          direction='column'
+                          alignItems='center'
+                          justifyContent='center'
+                      >
+                          <Button 
+                          variant="contained" 
+                          sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                          onClick={() => setCountMargin(countmargin + 1)}
+                          >
+                          #8
+                          <br/>
+                          Margin
+                          </Button>
+                          <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
+                          Total: {countmargin}
+                          </Button>
+                          <Stack direction='row'>
+                          <IconButton aria-label="reset" color="error" onClick={() => setCountMargin(countmargin - 1)} disabled={countmargin === 0} >
+                              <HorizontalRuleOutlinedIcon />
+                          </IconButton>
+                          <IconButton aria-label="reset" color="warning" onClick={() => setCountMargin(0)} >
+                              <RestartAltIcon />
+                          </IconButton>
+                          </Stack>
+                      </Grid>
+                  </Card>
+                  <Card sx={{m: 0.25}}>
+                      <Grid 
+                          container
+                          spacing={0}
+                          direction='column'
+                          alignItems='center'
+                          justifyContent='center'
+                      >
+                          <Button 
+                          variant="contained" 
+                          sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                          onClick={() => setCountWrinkle(countwrinkle + 1)}
+                          >
+                          #9
+                          <br/>
+                          Wrinkle
+                          </Button>
+                          <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
+                          Total: {countwrinkle}
+                          </Button>
+                          <Stack direction='row'>
+                          <IconButton aria-label="reset" color="error" onClick={() => setCountWrinkle(countwrinkle - 1)} disabled={countwrinkle === 0} >
+                              <HorizontalRuleOutlinedIcon />
+                          </IconButton>
+                          <IconButton aria-label="reset" color="warning" onClick={() => setCountWrinkle(0)} >
+                              <RestartAltIcon />
+                          </IconButton>
+                          </Stack>
+                      </Grid>
+                  </Card>
+                  <Card sx={{m: 0.25}}>
+                      <Grid 
+                          container
+                          spacing={0}
+                          direction='column'
+                          alignItems='center'
+                          justifyContent='center'
+                      >
+                          <Button 
+                          variant="contained" 
+                          sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                          onClick={() => setCountUpperKotor(countupperkotor + 1)}
+                          >
+                          #10
+                          <br/>
+                          Upper Kotor
+                          </Button>
+                          <Button variant="outlined" sx={{mt: 0.5, mb: 1, fontColor: 'black'}} disabled>
+                          Total: {countupperkotor}
+                          </Button>
+                          <Stack direction='row'>
+                          <IconButton aria-label="reset" color="error" onClick={() => setCountUpperKotor(countupperkotor - 1)} disabled={countupperkotor === 0} >
+                              <HorizontalRuleOutlinedIcon />
+                          </IconButton>
+                          <IconButton aria-label="reset" color="warning" onClick={() => setCountUpperKotor(0)} >
+                              <RestartAltIcon />
+                          </IconButton>
+                          </Stack>
+                      </Grid>
+                  </Card>
                 </Grid>
               </CardContent>
             </TabPanel>
@@ -790,7 +870,7 @@ const PageApp = () => {
               </CardContent>
             </TabPanel>
             <TabPanel value={value} index={2}>
-               {/* Deffect Button 2 */}
+              {/* Deffect Button 2 */}
               <CardContent sx={{mt: -3, mb: -2}}>
                   <Grid 
                       container 
