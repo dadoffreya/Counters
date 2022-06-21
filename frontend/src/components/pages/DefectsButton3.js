@@ -9,18 +9,17 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Stack from '@mui/material/Stack';
 
 
-const DefectsButton2 = () => {
+const DefectsButton3 = () => {
     // State Qty Item Defects
-  const [countsisi, setCountSisi] = useState(0);
-  const [countlabelpeeloff, setLabelPeelOff] = useState(0);
-  const [countevacacat, setCountEvaCacat] = useState(0);
-  const [countcatbasah, setCountCatBasah] = useState(0);
-  const [counttidakrata, setCountTidakRata] = useState(0);
-  const [countcatkelupas, setCountCatKelupas] = useState(0);
-  const [countbedasize, setCountBedaSize] = useState(0);
-  const [countkotor, setCountKotor] = useState(0);
-  const [countbedawarna, setCountBedaWarna] = useState(0);
-  const [counttranspaperkelupas, setCountTranspaperKelupas] = useState(0);
+  const [countstrapcekung, setCountStrapCekung] = useState(0);
+  const [countimevanok, setCountImevaNotOK] = useState(0);
+  const [countshrinkage, setCountShrinkage] = useState(0);
+  const [countsandalpanjangpendek, setCountPanjangPendek] = useState(0);
+  const [countbenangpanjang, setCountBenangPanjang] = useState(0);
+  const [countsolelaying, setCountSoleLaying] = useState(0);
+  const [countlainlain, setCountLainLain] = useState(0);
+  const [counttrimming, setCountTrimming] = useState(0);
+  const [countbrokenstitch, setCountBrokenStitch] = useState(0);
 
   return (
     <div>
@@ -43,20 +42,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountSisi(countsisi + 1)}
+                    onClick={() => setCountStrapCekung(countstrapcekung + 1)}
                     >
-                    #11
+                    #21
                     <br />
-                    Sisi Kanan Kiri Tidak Sama
+                    Strap Cekung
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countsisi}
+                    Total: {countstrapcekung}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountSisi(countsisi - 1)} disabled={countsisi === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountStrapCekung(countstrapcekung - 1)} disabled={countstrapcekung === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountSisi(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountStrapCekung(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -73,20 +72,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '12px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setLabelPeelOff(countlabelpeeloff + 1)}
+                    onClick={() => setCountImevaNotOK(countimevanok + 1)}
                     >
-                    #12
+                    #22
                     <br />
-                    Size Label Peel Off
+                    Imeva Not OK
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countlabelpeeloff}
+                    Total: {countimevanok}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setLabelPeelOff(countlabelpeeloff - 1)} disabled={countlabelpeeloff === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountImevaNotOK(countimevanok - 1)} disabled={countimevanok === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setLabelPeelOff(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountImevaNotOK(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -103,22 +102,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '12px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountEvaCacat(countevacacat + 1)}
+                    onClick={() => setCountShrinkage(countshrinkage + 1)}
                     >
-                    #13
+                    #23
                     <br />
-                    Outsole
-                    /
-                    Eva Cacat
+                    Shrinkage
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countevacacat}
+                    Total: {countshrinkage}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountEvaCacat(countevacacat - 1)} disabled={countevacacat === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountShrinkage(countshrinkage - 1)} disabled={countshrinkage === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountEvaCacat(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountShrinkage(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -135,20 +132,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountCatBasah(countcatbasah + 1)}
+                    onClick={() => setCountPanjangPendek(countsandalpanjangpendek + 1)}
                     >
-                    #14
+                    #24
                     <br />
-                    Cat Belum Kering
+                    Sandal Panjang Pendek
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countcatbasah}
+                    Total: {countsandalpanjangpendek}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountCatBasah(countcatbasah - 1)} disabled={countcatbasah === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountPanjangPendek(countsandalpanjangpendek - 1)} disabled={countsandalpanjangpendek === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountCatBasah(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountPanjangPendek(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -165,20 +162,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountTidakRata(counttidakrata + 1)}
+                    onClick={() => setCountBenangPanjang(countbenangpanjang + 1)}
                     >
-                    #15
+                    #25
                     <br />
-                    Tidak Rata
+                    Benang Panjang
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {counttidakrata}
+                    Total: {countbenangpanjang}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountTidakRata(counttidakrata - 1)} disabled={counttidakrata === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountBenangPanjang(countbenangpanjang - 1)} disabled={countbenangpanjang === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountTidakRata(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountBenangPanjang(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -205,20 +202,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountCatKelupas(countcatkelupas + 1)}
+                    onClick={() => setCountSoleLaying(countsolelaying + 1)}
                     >
-                    #16
+                    #26
                     <br />
-                    Cat Terkelupas
+                    Sole Laying
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countcatkelupas}
+                    Total: {countsolelaying}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountCatKelupas(countcatkelupas - 1)} disabled={countcatkelupas === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountSoleLaying(countsolelaying - 1)} disabled={countsolelaying === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountCatKelupas(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountSoleLaying(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -235,20 +232,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountBedaSize(countbedasize + 1)}
+                    onClick={() => setCountLainLain(countlainlain + 1)}
                     >
-                    #17
+                    #27
                     <br />
-                    Beda Size
+                    Lain - Lain
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countbedasize}
+                    Total: {countlainlain}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountBedaSize(countbedasize - 1)} disabled={countbedasize === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountLainLain(countlainlain - 1)} disabled={countlainlain === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountBedaSize(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountLainLain(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -265,20 +262,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountKotor(countkotor + 1)}
+                    onClick={() => setCountTrimming(counttrimming + 1)}
                     >
-                    #18
+                    #28
                     <br />
-                    Kotor
+                    Trimming
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countkotor}
+                    Total: {counttrimming}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountKotor(countkotor - 1)} disabled={countkotor === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountTrimming(counttrimming - 1)} disabled={counttrimming === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountKotor(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountTrimming(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -295,50 +292,20 @@ const DefectsButton2 = () => {
                     <Button 
                     variant="contained" 
                     sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountBedaWarna(countbedawarna + 1)}
+                    onClick={() => setCountBrokenStitch(countbrokenstitch + 1)}
                     >
-                    #19
+                    #29
                     <br />
-                    Beda Warna
+                    Broken Stitch
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
-                    Total: {countbedawarna}
+                    Total: {countbrokenstitch}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountBedaWarna(countbedawarna - 1)} disabled={countbedawarna === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountBrokenStitch(countbrokenstitch - 1)} disabled={countbrokenstitch === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountBedaWarna(0)} >
-                        <RestartAltIcon />
-                    </IconButton>
-                    </Stack>
-                </Grid>
-            </Card>
-            <Card sx={{m: 0.25}}>
-                <Grid 
-                    container
-                    spacing={0}
-                    direction='column'
-                    alignItems='center'
-                    justifyContent='center'
-                >
-                    <Button 
-                    variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
-                    onClick={() => setCountTranspaperKelupas(counttranspaperkelupas + 1)}
-                    >
-                    #10
-                    <br />
-                    Transpaper Terkelupas
-                    </Button>
-                    <Button variant="outlined" sx={{mt: 0.5, mb: 1, fontColor: 'black'}} disabled>
-                    Total: {counttranspaperkelupas}
-                    </Button>
-                    <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountTranspaperKelupas(counttranspaperkelupas - 1)} disabled={counttranspaperkelupas === 0} >
-                        <HorizontalRuleOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="reset" color="warning" onClick={() => setCountTranspaperKelupas(0)} >
+                    <IconButton aria-label="reset" color="warning" onClick={() => setCountBrokenStitch(0)} >
                         <RestartAltIcon />
                     </IconButton>
                     </Stack>
@@ -350,4 +317,4 @@ const DefectsButton2 = () => {
   );
 };
 
-export default DefectsButton2;
+export default DefectsButton3;

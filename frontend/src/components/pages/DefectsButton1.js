@@ -24,7 +24,7 @@ const DefectsButton1 = () => {
 
   return (
     <div>
-    <CardContent>
+    <CardContent sx={{mt: -3, mb: -2}}>
         <Grid 
             container 
             spacing={1}
@@ -42,7 +42,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountBonding(countbonding + 1)}
                     >
                     #1
@@ -72,7 +72,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountOverLem(countoverlem + 1)}
                     >
                     #2
@@ -83,7 +83,7 @@ const DefectsButton1 = () => {
                     Total: {countoverlem}
                     </Button>
                     <Stack direction='row'>
-                    <IconButton aria-label="reset" color="error" onClick={() => setCountBonding(countoverlem - 1)} disabled={countoverlem === 0} >
+                    <IconButton aria-label="reset" color="error" onClick={() => setCountOverLem(countoverlem - 1)} disabled={countoverlem === 0} >
                         <HorizontalRuleOutlinedIcon />
                     </IconButton>
                     <IconButton aria-label="reset" color="warning" onClick={() => setCountOverLem(0)} >
@@ -102,7 +102,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountRubberKotor(countrubberkotor + 1)}
                     >
                     #3
@@ -132,7 +132,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountOutsoleKotor(countoutsolekotor + 1)}
                     >
                     #4
@@ -162,7 +162,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountGap(countgap + 1)}
                     >
                     #5
@@ -190,7 +190,7 @@ const DefectsButton1 = () => {
             spacing={1}
             direction='row'
             alignItems='center'
-            justifyContent='center'
+            justifyContent='space-between'
         >
             <Card sx={{m: 0.25}}>
                 <Grid 
@@ -202,12 +202,12 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountLogoNOK(countlogonok + 1)}
                     >
                     #6
                     <br/>
-                    Logo Not OK
+                    Logo NOK
                     </Button>
                     <Button variant="outlined" sx={{mt: 0.5, mb: 1}} disabled>
                     Total: {countlogonok}
@@ -232,7 +232,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountBlooming(countblooming + 1)}
                     >
                     #7
@@ -262,7 +262,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountMargin(countmargin + 1)}
                     >
                     #8
@@ -292,7 +292,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountWrinkle(countwrinkle + 1)}
                     >
                     #9
@@ -322,7 +322,7 @@ const DefectsButton1 = () => {
                 >
                     <Button 
                     variant="contained" 
-                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '150px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '18px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
+                    sx={{mt: 0.5, mb: 0.25, width: '100px', height: '100px', display: 'flex', backgroundColor: '#3da9fc', fontSize: '11px', justifyContent: 'center', alignItems: 'center', ':hover': {backgroundColor: '#094067'}}} 
                     onClick={() => setCountUpperKotor(countupperkotor + 1)}
                     >
                     #10
