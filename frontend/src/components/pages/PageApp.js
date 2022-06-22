@@ -18,6 +18,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import PropTypes from 'prop-types';
+import CardMedia from '@mui/material/CardMedia';
 
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button';
@@ -126,7 +127,7 @@ const PageApp = () => {
     },
   ];
   const styleproduct = footwearstyle.filter( style => style.id === footwear).map( style => style.style);
-  
+
   // Data Line
   const [noline, setNoLine] = useState('');
   const handleChangeLine = (event) => {
@@ -1183,7 +1184,23 @@ const PageApp = () => {
               </CardContent>
             </TabPanel>
             <TabPanel value={value} index={3}>
-              <Typography variant="h1" color="initial">{styleproduct}</Typography>
+              <Card sx={{ maxWidth: '70vw' }} alignItems='center' justifyContent='center'>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {styleproduct}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
+                  </Typography>
+                </CardContent>
+              </Card>
             </TabPanel>
           </Card>
         </Grid>
