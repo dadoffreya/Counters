@@ -94,6 +94,9 @@ const Navbar = () => {
               <MenuItem component={Link} to='/app' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>App</Typography>
               </MenuItem>
+              <MenuItem component={Link} to='/inspect' onClick={handleCloseNavMenu}>
+                <Typography textAlign='center'>Inspect</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <BackupTableIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -133,6 +136,15 @@ const Navbar = () => {
                 to="/app" 
             >   
                 App
+            </Button>
+            <Button 
+                key='Inspect' 
+                onClick={handleCloseNavMenu} 
+                sx={{ my: 2, color: 'white', display: 'block' }} 
+                component={Link} 
+                to="/inspect" 
+            >   
+                Inspection
             </Button>
           </Box>
 
