@@ -67,9 +67,6 @@ function a11yProps(index) {
   };
 }
 
-// Dialog component
-
-
 // PageApp contents starts here
 
 const PageApp = () => {
@@ -182,6 +179,7 @@ const PageApp = () => {
       label: 'Line 3'
     },
   ];
+  const nomerline = line.filter( label => label.id === noline).map( line => line.label);
 
   return (
     <div>
@@ -304,12 +302,27 @@ const PageApp = () => {
                 <Box
                   component="form"
                   sx={{
+                    '& > :not(style)': {width: '10ch' }, ml: 1
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <Card style={{backgroundColor: '#000' }}>
+                    <Grid container spacing={0.5} alignItems='center' justifyContent='center' direction='column' sx={{p: .25, backgroundColour: '#3da9fc'}}>
+                      <Typography variant="subtitle2" color="#fff" sx={{ml: 0.5, mt: 0.25}}>Pass Rate</Typography>
+                      <Typography variant="subtitle2" color="#fff" sx={{ml: 0.5, mt: -1}}>{totalOK/qtyoutput*100}%</Typography>
+                    </Grid>
+                  </Card>
+                </Box>
+                <Box
+                  component="form"
+                  sx={{
                     '& > :not(style)': {width: '5ch'}, ml: 1
                   }}
                   noValidate
                   autoComplete="off"
                 >
-                  <IconButton aria-label="save" color="primary" disabled={totalOK < 0} onClick={handleClickOpenDialog}>
+                  <IconButton aria-label="save" color="primary" disabled={totalOK < 0 || qtyoutput === null} onClick={handleClickOpenDialog}>
                     <SaveIcon/>
                   </IconButton>
                   <Dialog
@@ -319,12 +332,30 @@ const PageApp = () => {
                     aria-describedby="alert-dialog-description"
                   >
                     <DialogTitle id="alert-dialog-title">
-                      {"Use Google's location service?"}
+                      Are you sure to save this data?
                     </DialogTitle>
                     <DialogContent>
                       <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
+                        Inspection result details:
+                      </DialogContentText>
+                      <br/>
+                      <DialogContentText id="alert-dialog-description">
+                        {nomerline}
+                      </DialogContentText>
+                      <DialogContentText id="alert-dialog-description">
+                        {styleproduct}
+                      </DialogContentText>
+                      <DialogContentText id="alert-dialog-description">
+                        Qty Inspect: {qtyoutput}
+                      </DialogContentText>
+                      <DialogContentText id="alert-dialog-description">
+                        Qty Defect: {totaldefect}
+                      </DialogContentText>
+                      <DialogContentText id="alert-dialog-description">
+                        Qty OK: {totalOK}
+                      </DialogContentText>
+                      <DialogContentText id="alert-dialog-description">
+                        Quality Rate: {totalOK/qtyoutput*100}%
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>
