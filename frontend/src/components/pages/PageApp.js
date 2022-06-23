@@ -18,22 +18,21 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import PropTypes from 'prop-types';
-import CardMedia from '@mui/material/CardMedia';
-
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button';
 import HorizontalRuleOutlinedIcon from '@mui/icons-material/HorizontalRuleOutlined';
 import IconButton from '@mui/material/IconButton'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import SaveIcon from '@mui/icons-material/Save';
 import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
-
-
-
-
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
   // const [date, setDate] = React.useState(null);
-  
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,7 +46,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 2 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -68,10 +67,26 @@ function a11yProps(index) {
   };
 }
 
+// Dialog component
+
+
+// PageApp contents starts here
+
 const PageApp = () => {
+  // Tabs handler
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  // Dialog handler
+  const [open, setOpenDialog] = React.useState(false);
+
+  const handleClickOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   // State Button Defect
@@ -106,27 +121,47 @@ const PageApp = () => {
   const [countbrokenstitch, setCountBrokenStitch] = useState(0);
 
   // State Qty Output
-  const [qtyoutput, setQtyOutput] = useState(0);
+  const [qtyoutput, setQtyOutput] = useState(null);
   const handleQtyOutput = (event) => {
     setQtyOutput(event.target.value);
   };
 
+  // State Qty Total Defects
+  const totaldefect = 
+    countbonding + countoverlem + countrubberkotor + countoutsolekotor + countgap +
+    countlogonok + countblooming + countmargin + countwrinkle + countupperkotor +
+    countsisi + countlabelpeeloff + countevacacat + countcatbasah + counttidakrata +
+    countcatkelupas + countbedasize + countkotor + countbedawarna + counttranspaperkelupas +
+    countstrapcekung + countimevanok + countshrinkage + countsandalpanjangpendek + countbenangpanjang +
+    countsolelaying + countlainlain + counttrimming + countbrokenstitch
+    ;
+
+  // State Qty OK
+  const totalOK = qtyoutput - totaldefect;
   // Data Footwear Style
-  const [footwear, setFootwear] = useState("");
+  const [footwear, setFootwear] = useState(null);
   const handleChangeFootwear = (event) => {
     setFootwear(event.target.value);
   };
   const footwearstyle = [
     {
       id: '1',
-      style: '540 Jr Boy Blue green'
+      style: '540 Jr Boy Blue green',
+      imagepath: '/images/540jrboybluegreen.jpg'
     },
     {
       id: '2',
-      style: '540 Jr Boy Navy red'
+      style: '540 Jr Boy Navy red',
+      imagepath: '/images/540jrboywhite.jpg'
+    },
+    {
+      id: '3',
+      style: '540 Jr Boy Navy pink',
+      imagepath: '/images/540jrboypink.jpg'
     },
   ];
   const styleproduct = footwearstyle.filter( style => style.id === footwear).map( style => style.style);
+  const fotoproduct = footwearstyle.filter( foto => foto.id === footwear).map( foto => foto.imagepath);
 
   // Data Line
   const [noline, setNoLine] = useState('');
@@ -146,7 +181,7 @@ const PageApp = () => {
       id: '3',
       label: 'Line 3'
     },
-  ]
+  ];
 
   return (
     <div>
@@ -160,12 +195,12 @@ const PageApp = () => {
           justifyContent='center'
           sx={{mt: 0}}
         >
-          <Card sx={{backgroundColor: '#fffffe', width: '70vw'}}>
-          <CardHeader title="Inspection" sx={{textAlign: 'center', mb: -3}}/>
-            <CardContent sx={{mt:1}}>
+          <Card sx={{backgroundColor: '#fffffe', width: '95vw'}}>
+          <CardHeader title="Inspection" sx={{textAlign: 'center', mb: -3.5, mt: -2}}/>
+            <CardContent sx={{mt: -3, mb: -2.5}}>
               <Grid 
                   container 
-                  spacing={1}
+                  spacing={0}
                   direction='row'
                   alignItems='center'
                   justifyContent='center'
@@ -184,6 +219,7 @@ const PageApp = () => {
                     value={noline}
                     onChange={handleChangeLine}
                     label="Line" 
+                    size="small"
                     variant="outlined"
                   >
                     {line.map((option) => (
@@ -196,7 +232,7 @@ const PageApp = () => {
                 <Box
                   component="form"
                   sx={{
-                    '& > :not(style)': {width: '25ch' }, ml: 1
+                    '& > :not(style)': {width: '15ch' }, ml: 1
                   }}
                   noValidate
                   autoComplete="off"
@@ -207,6 +243,7 @@ const PageApp = () => {
                     value={footwear}
                     onChange={handleChangeFootwear}
                     label="Style" 
+                    size="small"
                     variant="outlined"
                   >
                     {footwearstyle.map((option) => (
@@ -215,7 +252,7 @@ const PageApp = () => {
                       </MenuItem>
                     ))}
                   </TextField>
-                </Box>
+                </Box> 
                 <Box
                   component="form"
                   sx={{
@@ -231,18 +268,83 @@ const PageApp = () => {
                     onChange={handleQtyOutput}
                     label="Qty Output" 
                     variant="outlined"
+                    size="small"
                   />
+                </Box>
+                <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': {width: '8ch' }, ml: 1
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <Card style={{backgroundColor: "#ffc107"}}>
+                    <Grid container spacing={0.5} alignItems='center' justifyContent='center' direction='column' sx={{p: .25, backgroundColour: '#3da9fc'}}>
+                      <Typography variant="subtitle2" color="error" sx={{ml: 0.5, mt: 0.25}}>Defect</Typography>
+                      <Typography variant="subtitle2" color="initial" sx={{ml: 0.5, mt: -1}}>{totaldefect}</Typography>
+                    </Grid>
+                  </Card>
+                </Box>
+                <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': {width: '8ch' }, ml: 1
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <Card style={{backgroundColor: "#4caf50"}}>
+                    <Grid container spacing={0.5} alignItems='center' justifyContent='center' direction='column' sx={{p: .25, backgroundColour: '#3da9fc'}}>
+                      <Typography variant="subtitle2" color="#fff" sx={{ml: 0.5, mt: 0.25}}>OK</Typography>
+                      <Typography variant="subtitle2" color="#fff" sx={{ml: 0.5, mt: -1}}>{totalOK}</Typography>
+                    </Grid>
+                  </Card>
+                </Box>
+                <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': {width: '5ch'}, ml: 1
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <IconButton aria-label="save" color="primary" disabled={totalOK < 0} onClick={handleClickOpenDialog}>
+                    <SaveIcon/>
+                  </IconButton>
+                  <Dialog
+                    open={open}
+                    onClose={handleCloseDialog}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title">
+                      {"Use Google's location service?"}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Let Google help apps determine location. This means sending anonymous
+                        location data to Google, even when no apps are running.
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleCloseDialog}>Disagree</Button>
+                      <Button onClick={handleCloseDialog} autoFocus>
+                        Agree
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                 </Box>
               </Grid>
             </CardContent>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs" centered sx={{mb: 0}}>
-              <Tab label="Category 1" {...a11yProps(0)} />
-              <Tab label="Category 2" {...a11yProps(1)} />
-              <Tab label="Category 3" {...a11yProps(2)} />
-              <Tab label="Style" {...a11yProps(3)} />
+              <Tab label="Style" {...a11yProps(0)} />
+              <Tab label="Category 1" {...a11yProps(1)} />
+              <Tab label="Category 2" {...a11yProps(2)} />
+              <Tab label="Category 3" {...a11yProps(3)} />
             </Tabs>
             <Divider />
-            <TabPanel value={value} index={0} >
+            <TabPanel value={value} index={1} >
               {/* Deffect Button 1 */}
               <CardContent sx={{mt: -3, mb: -2}}>
                 <Grid 
@@ -250,7 +352,7 @@ const PageApp = () => {
                   spacing={1}
                   direction='row'
                   alignItems='center'
-                  justifyContent='center'
+                  justifyContent='space-between'
                 >
                   <Card sx={{m: 0.25}}>
                       <Grid 
@@ -410,7 +512,7 @@ const PageApp = () => {
                   spacing={1}
                   direction='row'
                   alignItems='center'
-                  justifyContent='center'
+                  justifyContent='space-between'
                 >
                   <Card sx={{m: 0.25}}>
                       <Grid 
@@ -565,7 +667,7 @@ const PageApp = () => {
                 </Grid>
               </CardContent>
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={2}>
               {/* Deffect Button 2 */}
               <CardContent sx={{mt: -3, mb: -2}}>
                 <Grid 
@@ -573,7 +675,7 @@ const PageApp = () => {
                     spacing={1}
                     direction='row'
                     alignItems='center'
-                    justifyContent='center'
+                    justifyContent='space-between'
                 >
                   <Card sx={{m: 0.25}}>
                       <Grid 
@@ -735,7 +837,7 @@ const PageApp = () => {
                     spacing={1}
                     direction='row'
                     alignItems='center'
-                    justifyContent='center'
+                    justifyContent='space-between'
                 >
                   <Card sx={{m: 0.25}}>
                       <Grid 
@@ -890,7 +992,7 @@ const PageApp = () => {
                 </Grid>
               </CardContent>
             </TabPanel>
-            <TabPanel value={value} index={2}>
+            <TabPanel value={value} index={3}>
               {/* Deffect Button 2 */}
               <CardContent sx={{mt: -3, mb: -2}}>
                 <Grid 
@@ -898,7 +1000,7 @@ const PageApp = () => {
                     spacing={1}
                     direction='row'
                     alignItems='center'
-                    justifyContent='center'
+                    justifyContent='space-between'
                 >
                     <Card sx={{m: 0.25}}>
                         <Grid 
@@ -1058,7 +1160,7 @@ const PageApp = () => {
                     spacing={1}
                     direction='row'
                     alignItems='center'
-                    justifyContent='center'
+                    justifyContent='space-between'
                 >
                     <Card sx={{m: 0.25}}>
                         <Grid 
@@ -1183,24 +1285,22 @@ const PageApp = () => {
                 </Grid>
               </CardContent>
             </TabPanel>
-            <TabPanel value={value} index={3}>
-              <Card sx={{ maxWidth: '70vw' }} alignItems='center' justifyContent='center'>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {styleproduct}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                  </Typography>
-                </CardContent>
-              </Card>
+            <TabPanel value={value} index={0}>
+                <Grid container spacing={1} direction='column' justifyContent='center' alignItems='center'>
+                  <Card sx={{ maxWidth: '65vw' }}>
+                    <Box
+                      component="img"
+                      sx={{
+                        height: "100%",
+                        width: "100%",
+                        maxHeight: { xs: "100%", md: "100%" },
+                        maxWidth: { xs: "100%", md: "100%" },
+                      }}
+                      alt={styleproduct}
+                      src={fotoproduct}
+                    />
+                  </Card>
+                </Grid>
             </TabPanel>
           </Card>
         </Grid>
