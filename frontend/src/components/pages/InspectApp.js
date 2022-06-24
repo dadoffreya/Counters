@@ -6,24 +6,25 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const InspectApp = () => {
   return (
     <div>
-    <Navbar />
+        <Navbar />
         <Grid
-          container
-          spacing={0}
-          direction="row"
-          justify="center"
-          alignItems="center"
-          wrap="nowrap"
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            wrap="nowrap"
         >
             <Card
                 sx={{
                     width: '25vw', mr: .5, mt: .5,
                     height: '86vh',
-                    background: '#3378FF',
+                    background: '#9442FE',
                     borderRadius: 3
                 }}
             >
@@ -37,81 +38,103 @@ const InspectApp = () => {
                     sx={{mt: 2}}
                 >
 
-                  {/* Line number input box   */}
-                  <Card 
-                    sx={{
-                        p: 1, 
-                        mb: 0.5,
-                        backgroundColor: "rgba(0,0,0,0.1)", 
-                        backdropFilter: "blur(10px)",
-                        textColor: "#FFF",
-                        borderRadius: 3,
+                    {/* Line number input box   */}
+                    <Card 
+                        sx={{
+                            p: 1, 
+                            mb: 0.5,
+                            textColor: "#FFF",
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
                         }}
                     >
-                    <TextField
-                      id="outline-basic"
-                      label="Line Number"
-                      value='Value'
-                    //   onChange={}
-                      variant="standard"
-                      size='small'
-                      wrap
-                      sx={{
-                        width: '22vw', 
-                        fontColor: "#FFF",
-                        input: { color: 'white' },
-                        label: { color: 'white' }
-                        }}
-                    />
-                  </Card>
+                        <TextField
+                            id="outline-basic"
+                            label="Line Number"
+                            value='Value'
+                        //   onChange={}
+                            variant="standard"
+                            size='small'
+                            wrap
+                            sx={{
+                            width: '22vw', 
+                            fontColor: "#FFF",
+                            input: { 
+                                color: 'white',
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                },
+                            label: { 
+                                color: 'white',
+                                fontFamily: 'monospace',
+                                fontWeight: 500,
+                                }
+                            }}
+                        />
+                    </Card>
 
-                  {/* Style input box */}
-                  <Card 
-                    sx={{
-                        p: 1, 
-                        mb: 0.5,
-                        backgroundColor: "rgba(0,0,0,0.1)", 
-                        backdropFilter: "blur(10px)",
-                        textColor: "#FFF",
-                        borderRadius: 3,
+                    {/* Style input box */}
+                    <Card 
+                        sx={{
+                            p: 1, 
+                            mb: 0.5,
+                            textColor: "#FFF",
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
                         }}
                     >
-                    <TextField
-                      id="outline-basic"
-                      label="Line Number"
-                      value='Value'
-                    //   onChange={}
-                      variant="standard"
-                      size='small'
-                      sx={{
-                        width: '22vw', 
-                        fontColor: "#FFF",
-                        input: { color: 'white' },
-                        label: { color: 'white' }
-                        }}
-                    />
-                  </Card>
+                        <TextField
+                            id="outline-basic"
+                            label="Style"
+                            value='Footwear Style A Colour A'
+                        //   onChange={}
+                            variant="standard"
+                            size='small'
+                            sx={{
+                            width: '22vw', 
+                            fontColor: "#FFF",
+                            input: { 
+                                color: 'white',
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                },
+                            label: { 
+                                color: 'white',
+                                fontFamily: 'monospace',
+                                fontWeight: 500,
+                                }
+                            }}
+                        />
+                    </Card>
 
-                  {/* Grade Count Box */}
-                  <Card 
-                    sx={{
-                        p: 1,
-                        mt: 2,
-                        mb: 2, 
-                        backgroundColor: "rgba(0,0,0,0.1)", 
-                        backdropFilter: "blur(1px)",
-                        textColor: "#FFF",
-                        // borderRadius: 3,
-                        }}
+                    {/* Grade Count Box */}
+                    <Card 
+                        sx={{
+                            p: 1,
+                            mt: 2,
+                            mb: 2, 
+                            textColor: "#FFF",
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
+                            }}
                     >
                         <Grid
-                          container
-                          spacing={0}
-                          direction="row"
-                          justify="center"
-                          alignItems="center"
-                          wrap="wrap"
-                          
+                            container
+                            spacing={0}
+                            direction="row"
+                            justify="center"
+                            alignItems="center"
+                            wrap="wrap"
+                            
                         >
                             <Box
                                 sx={{
@@ -124,19 +147,23 @@ const InspectApp = () => {
                                 wrap='wrap'
                             >
                                 <Grid
-                                  container
-                                  spacing={0}
-                                  direction="row"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                  wrap="wrap"
-                                  sx={{
+                                    container
+                                    spacing={0}
+                                    direction="row"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    wrap="wrap"
+                                    sx={{
                                     p: 0.5
-                                  }}
+                                    }}
                                 >
                                     <Typography 
                                         variant="h6" 
                                         color="white"
+                                        sx={{
+                                            fontFamily: 'monospace',
+                                            fontWeight: 700
+                                        }}
                                     >
                                         A Grade
                                     </Typography>
@@ -152,83 +179,208 @@ const InspectApp = () => {
                                 }}
                             >
                                 <Grid
-                                  container
-                                  spacing={0}
-                                  direction="row"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                  wrap="wrap"
-                                  sx={{
+                                    container
+                                    spacing={0}
+                                    direction="row"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    wrap="wrap"
+                                    sx={{
                                     p: 0.5
-                                  }}
+                                    }}
                                 >
                                     <Typography 
                                         variant="h6" 
                                         color="white"
+                                        sx={{
+                                            fontFamily: 'monospace',
+                                            fontWeight: 700
+                                        }}
                                     >
                                         B Grade
                                     </Typography>
                                 </Grid>
                             </Box>
                         </Grid>
-                  </Card>
+                    </Card>
 
-                  {/* RFT Box */}
-                  <Card 
-                    sx={{
-                        p: 1, 
-                        mb: 0.5,
-                        backgroundColor: "rgba(0,0,0,0.1)", 
-                        backdropFilter: "blur(10px)",
-                        textColor: "#FFF",
-                        borderRadius: 3,
-                        }}
-                    >
-                    <Grid
-                      container
-                      spacing={0}
-                      direction="row"
-                      justifyContent="center"
-                      alignItems="center"
-                      wrap="wrap"
-                    >
-                      <Box
+                    {/* RFT Box */}
+                    <Card 
                         sx={{
-                            width: '20vw',
-                            height: '30vh'
+                            p: 1, 
+                            mb: 0.5,
+                            textColor: "#FFF",
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
                         }}
-                      >
+                    >
                         <Grid
-                          container
-                          spacing={0}
-                          direction="row"
-                          justifyContent="center"
-                          alignItems="center"
-                          wrap="wrap"
-                          sx={{
-                            p: 1
-                          }}
+                            container
+                            spacing={0}
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            wrap="wrap"
                         >
-                            <Typography 
-                                variant="h3" 
-                                color="#FFFFFF"
+                            <Box
+                            sx={{
+                                width: '21vw',
+                                height: '30vh'
+                            }}
                             >
-                                RFT Rate
-                            </Typography>
+                            <Grid
+                                container
+                                spacing={0}
+                                direction="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                wrap="wrap"
+                                sx={{
+                                    p: 0.5
+                                }}
+                            >
+                                <Typography 
+                                    variant="h3" 
+                                    color="#FFFFFF"
+                                    sx={{
+                                        fontFamily: 'monospace',
+                                        fontWeight: 700
+                                    }}
+                                >
+                                    RFT Rate
+                                </Typography>
+                            </Grid>
+                            </Box>
                         </Grid>
-                      </Box>
-                    </Grid>
-                  </Card>
+                    </Card>
                 </Grid>
             </Card>
+
+            {/* CONTENTS BOX */}
             <Card
                 sx={{
                     width: '75vw', mr: .5, mt: .5,
                     height: '86vh',
-                    background: 'linear-gradient(to right, #3378FF, #9442FE)',
+                    background: 'linear-gradient(to right, #9442FE, #3378FF)',
                     borderRadius: 3
                 }}
             >
+                <Grid
+                  container
+                  spacing={0}
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="flex-start"
+                  wrap="wrap"
+                  
+                >   
+                {/* TOP CONTENTS */}
+                    <Card
+                        sx={{
+                            width: '98%',
+                            height: '12vh',
+                            my: 1,
+                            ml: 1.25,
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
+                        }}
+                    >
+                        <Grid
+                          container
+                          spacing={1}
+                          direction="row"
+                          justifyContent="space-between"
+                          alignItem="center"
+                          wrap="nowrap"
+                          sx={{
+                            py: 0.5,
+                            px: 1
+                          }}
+                          
+                        >
+                            <Grid item>
+                                <Box
+                                    sx={{
+                                        width: '58vw',
+                                        height: '10.5vh',
+                                        background: 'transparent',
+                                        border: 1,
+                                        borderRadius: 3,
+                                    }}
+                                />
+                            </Grid>   
+
+                            {/* OK BUTTON                                                      */}
+                            <Grid item>
+                                <Box
+                                    sx={{
+                                        width: '10vw',
+                                        height: '10.5vh',
+                                        background: 'transparent',
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <Button 
+                                        variant="contained" 
+                                        sx={{
+                                            width: '100%',
+                                            height: '100%',
+                                            borderRadius: 1,
+                                            background: '#4caf50',
+                                            boxShadow: '20px 20px 60px #2b66d9, -20px -20px 60px #3b8aff',
+                                        }}
+                                    >
+                                        <Grid
+                                          container
+                                          spacing={0}
+                                          direction="row"
+                                          justifyContent="center"
+                                          alignItems="center"
+                                          alignContent="center"
+                                          wrap="nowrap"
+                                          
+                                        >
+                                            {/* <Typography 
+                                                variant="h2" 
+                                                color="#FFFFFF"
+                                                sx={{
+                                                    fontFamily: 'monospace',
+                                                    fontWeight: 700
+                                                }}
+                                            >
+                                                OK
+                                            </Typography> */}
+                                            <CheckRoundedIcon style={{fontSize: 80}} />  
+                                        </Grid>
+                                    </Button>
+                                
+                                </Box>
+                            </Grid>                                                        
+                        </Grid>
+                    </Card>
+
+                    {/* BOTTOM CONTENTS */}
+                    <Card
+                        sx={{
+                            width: '98%',
+                            height: '70vh',
+                            ml: 1.25,
+                            mb: 2,
+                            background: 'rgba( 255, 255, 255, 0.3 )',
+                            boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                            backdropFilter: "blur(1.5px)",
+                            border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                            borderRadius: 3,
+                        }}
+                    >
+                    </Card>
+                </Grid>
             </Card>
         </Grid>
     </div>
