@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="static" style={{background: 'transparent', boxShadow: 'none'}}>
-      <Container maxWidth="xl" sx={{background: 'linear-gradient(to right, #3378FF, #9442FE)', borderRadius: 5}}>
+      <Container maxWidth="xl" sx={{background: 'linear-gradient(to right, #3378FF, #9442FE)', borderRadius: 3}}>
         <Toolbar disableGutters>
           <BackupTableIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
