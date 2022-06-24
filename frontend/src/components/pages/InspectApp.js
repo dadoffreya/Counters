@@ -11,6 +11,23 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 
 
+
+
+const tombol = [
+    {
+        nomor: '1',
+        label: 'Issue 1'
+    },
+    {
+        nomor: '2',
+        label: 'Issue 2'
+    },
+    {
+        nomor: '3',
+        label: 'Issue 3'
+    },
+];
+
 const InspectApp = () => {
   return (
     <div>
@@ -381,22 +398,52 @@ const InspectApp = () => {
                           wrap="wrap"
                           sx={{m: '5%'}}
                         >
+                            {/* DEFECT BUTTONS */}
                             <Grid item>
-                                <Button variant="contained" color="primary">
-                                    1
-                                </Button>
+                                {tombol.map((opsi) => (
+                                    <Button 
+                                        variant="contained" 
+                                        color="primary" 
+                                        key={opsi.nomor} 
+                                        value={opsi.nomor}
+                                        sx={{
+                                                m: 1,
+                                                width: '15rem',
+                                                height: '4rem',
+                                            }}
+                                    >
+                                        <Grid
+                                          container
+                                          spacing={0}
+                                          direction="row"
+                                          justifyContent="space-between"
+                                          alignItems="center"
+                                          alignContent="center"
+                                          wrap="wrap"
+                                          sx={{
+                                               mt: '0.1rem'
+                                            }}
+                                        >
+                                            <Box
+                                                justifyContent= 'center'
+                                                alignItems= 'center'
+                                                sx={{
+                                                    width: '2.5rem',
+                                                    height: '2.5rem',
+                                                    mr: 1,
+                                                    background: '#000',
+                                                    borderRadius: 2,
+                                                }}
+                                            >
+                                                {opsi.nomor}
+                                            </Box>
+                                            <Typography variant="button" color="initial">
+                                                {opsi.label}
+                                            </Typography>
+                                        </Grid>
+                                    </Button>
+                                ))}
                             </Grid>
-                            <Grid item>
-                                <Button variant="contained" color="primary">
-                                    1
-                                </Button>
-                            </Grid>
-                            <Grid item>
-                                <Button variant="contained" color="primary">
-                                    1
-                                </Button>
-                            </Grid>
-                            
                         </Grid>
                     </Card>
                 </Grid>
