@@ -92,7 +92,7 @@ const InspectApp = () => {
                     />
                   </Card>
 
-                  {/* Grad Count Box */}
+                  {/* Grade Count Box */}
                   <Card 
                     sx={{
                         p: 1,
@@ -119,8 +119,9 @@ const InspectApp = () => {
                                     width: '10vw',
                                     height: '100px',
                                     borderRadius: 3,
-                                    backgroundColor: '#FFF'
+                                    backgroundColor: '#4caf50'
                                 }}
+                                wrap='wrap'
                             >
                                 <Grid
                                   container
@@ -135,7 +136,7 @@ const InspectApp = () => {
                                 >
                                     <Typography 
                                         variant="h6" 
-                                        color="initial"
+                                        color="white"
                                     >
                                         A Grade
                                     </Typography>
@@ -147,7 +148,7 @@ const InspectApp = () => {
                                     width: '10vw',
                                     height: '100px',
                                     borderRadius: 3,
-                                    backgroundColor: '#FFF'
+                                    backgroundColor: '#f44336'
                                 }}
                             >
                                 <Grid
@@ -163,7 +164,7 @@ const InspectApp = () => {
                                 >
                                     <Typography 
                                         variant="h6" 
-                                        color="initial"
+                                        color="white"
                                     >
                                         B Grade
                                     </Typography>
