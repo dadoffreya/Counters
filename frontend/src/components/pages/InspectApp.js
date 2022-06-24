@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
+
+
 const InspectApp = () => {
   return (
     <div>
@@ -296,7 +298,7 @@ const InspectApp = () => {
                           spacing={1}
                           direction="row"
                           justifyContent="space-between"
-                          alignItem="center"
+                          alignItems="center"
                           wrap="nowrap"
                           sx={{
                             py: 0.5,
@@ -316,7 +318,7 @@ const InspectApp = () => {
                                 />
                             </Grid>   
 
-                            {/* OK BUTTON                                                      */}
+                            {/* OK BUTTON */}
                             <Grid item>
                                 <Box
                                     sx={{
@@ -346,16 +348,6 @@ const InspectApp = () => {
                                           wrap="nowrap"
                                           
                                         >
-                                            {/* <Typography 
-                                                variant="h2" 
-                                                color="#FFFFFF"
-                                                sx={{
-                                                    fontFamily: 'monospace',
-                                                    fontWeight: 700
-                                                }}
-                                            >
-                                                OK
-                                            </Typography> */}
                                             <CheckRoundedIcon style={{fontSize: 80}} />  
                                         </Grid>
                                     </Button>
@@ -379,6 +371,33 @@ const InspectApp = () => {
                             borderRadius: 3,
                         }}
                     >
+                        <Grid
+                          container
+                          spacing={0}
+                          direction="row"
+                          justifyContent="center"
+                          alignContent='center'
+                          alignItems="center"
+                          wrap="wrap"
+                          sx={{m: '5%'}}
+                        >
+                            <Grid item>
+                                <Button variant="contained" color="primary">
+                                    1
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="primary">
+                                    1
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="primary">
+                                    1
+                                </Button>
+                            </Grid>
+                            
+                        </Grid>
                     </Card>
                 </Grid>
             </Card>
