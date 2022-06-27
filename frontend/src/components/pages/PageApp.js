@@ -68,13 +68,6 @@ function a11yProps(index) {
 }
 
 // PageApp contents starts here
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import Grid from '@mui/material/Grid'
->>>>>>> Stashed changes
-
 const PageApp = () => {
   // Tabs handler
   const [value, setValue] = React.useState(0);
