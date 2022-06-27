@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize";
 import dbase from "../config/Database.js";
 
-const {DataTypes} = Sequilize;
+const {DataTypes} = Sequelize;
 
 const Passed = dbase.define('rft_main',{
     line: DataTypes.STRING,
