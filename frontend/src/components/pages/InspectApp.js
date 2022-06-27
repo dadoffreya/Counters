@@ -58,7 +58,6 @@ const InspectApp = () => {
                     direction='column'
                     justify='center'
                     alignItems='center'
-                    wrap='wrap'
                     sx={{mt: 2}}
                 >
 
@@ -158,7 +157,6 @@ const InspectApp = () => {
                             justify="center"
                             alignItems="center"
                             wrap="wrap"
-                            
                         >
                             <Box
                                 sx={{
@@ -297,14 +295,14 @@ const InspectApp = () => {
                                     RFT Rate
                                 </Typography>
                                 <Typography 
-                                    variant="h3" 
+                                    variant="h1" 
                                     color="#FFFFFF"
                                     sx={{
                                         fontFamily: 'monospace',
                                         fontWeight: 700
                                     }}
                                 >
-                                    {rftRatemath} %
+                                    {rftRatemath}%
                                 </Typography>
                             </Grid>
                             </Box>
