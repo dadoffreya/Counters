@@ -21,7 +21,6 @@ import PropTypes from 'prop-types';
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button';
 import HorizontalRuleOutlinedIcon from '@mui/icons-material/HorizontalRuleOutlined';
-<<<<<<< Updated upstream
 import IconButton from '@mui/material/IconButton'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import SaveIcon from '@mui/icons-material/Save';
@@ -69,7 +68,6 @@ function a11yProps(index) {
 }
 
 // PageApp contents starts here
-=======
 import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
