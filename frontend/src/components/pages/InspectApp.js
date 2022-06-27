@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
+import Clock from 'react-live-clock';
 // import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -9,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+
+
 
 const tombol = [
     {
@@ -364,7 +367,33 @@ const InspectApp = () => {
                                         border: 1,
                                         borderRadius: 3,
                                     }}
-                                />
+                                >
+                                    <Grid
+                                      container
+                                      spacing={0}
+                                      direction="row"
+                                      justifyContent="flex-start"
+                                      alignItems="center"
+                                      alignContent="center"
+                                      wrap="nowrap"
+                                      sx={{
+                                        mt: 1.25,
+                                        ml: 1
+                                      }}
+                                      
+                                    >
+                                        <Typography 
+                                            variant="h4" 
+                                            color="#FFF"
+                                            sx={{
+                                                fontFamily: 'monospace',
+                                                fontWeight: 700,
+                                            }}
+                                        >
+                                            <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Jakarta'} />
+                                        </Typography>
+                                    </Grid>
+                                </Box>
                             </Grid>   
 
                             {/* OK BUTTON */}
