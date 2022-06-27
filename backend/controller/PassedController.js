@@ -11,8 +11,8 @@ export const getPassed = async(req, res) => {
 
 export const addPassed = async(req, res) => {
     try {
-        await Passed.create(req.body);
-        res.status(201).json({msg: "1 Passed Added"});
+        await Passed.create();
+        res.status(201).json({msg: "1 Record Added!🥰"});
     } catch (error) {
         console.log(error.message);
     }
