@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar';
 // import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-
-
-
-
 
 const tombol = [
     {
@@ -29,6 +26,11 @@ const tombol = [
 ];
 
 const InspectApp = () => {
+    const [counttotalgradea, setTotalGradeA] = useState(0);
+    const [counttotalgradeb, setTotalGradeB] = useState(0);
+    const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
+    const rftRatemath = Math.round(rftRate);
+
   return (
     <div>
         <Navbar />
@@ -168,7 +170,7 @@ const InspectApp = () => {
                                 <Grid
                                     container
                                     spacing={0}
-                                    direction="row"
+                                    direction="column"
                                     justifyContent="center"
                                     alignItems="center"
                                     wrap="wrap"
@@ -186,6 +188,16 @@ const InspectApp = () => {
                                     >
                                         A Grade
                                     </Typography>
+                                    <Typography 
+                                        variant="h4" 
+                                        color="white"
+                                        sx={{
+                                            fontFamily: 'monospace',
+                                            fontWeight: 700
+                                        }}
+                                    >
+                                        {counttotalgradea}
+                                    </Typography>
                                 </Grid>
                             </Box>
                             <Box
@@ -200,7 +212,7 @@ const InspectApp = () => {
                                 <Grid
                                     container
                                     spacing={0}
-                                    direction="row"
+                                    direction="column"
                                     justifyContent="center"
                                     alignItems="center"
                                     wrap="wrap"
@@ -217,6 +229,16 @@ const InspectApp = () => {
                                         }}
                                     >
                                         B Grade
+                                    </Typography>
+                                    <Typography 
+                                        variant="h4" 
+                                        color="white"
+                                        sx={{
+                                            fontFamily: 'monospace',
+                                            fontWeight: 700
+                                        }}
+                                    >
+                                        {counttotalgradeb}
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -270,6 +292,16 @@ const InspectApp = () => {
                                     }}
                                 >
                                     RFT Rate
+                                </Typography>
+                                <Typography 
+                                    variant="h3" 
+                                    color="#FFFFFF"
+                                    sx={{
+                                        fontFamily: 'monospace',
+                                        fontWeight: 700
+                                    }}
+                                >
+                                    {rftRatemath} %
                                 </Typography>
                             </Grid>
                             </Box>
@@ -347,6 +379,7 @@ const InspectApp = () => {
                                 >
                                     <Button 
                                         variant="contained" 
+                                        onClick={() => setTotalGradeA(counttotalgradea + 1)}
                                         sx={{
                                             width: '100%',
                                             height: '100%',
@@ -396,27 +429,28 @@ const InspectApp = () => {
                           alignContent='center'
                           alignItems="center"
                           wrap="wrap"
-                          sx={{m: '5%'}}
+                          sx={{m: '2%'}}
                         >
                             {/* DEFECT BUTTONS */}
                             <Grid item>
                                 {tombol.map((opsi) => (
                                     <Button 
                                         variant="contained" 
-                                        color="primary" 
                                         key={opsi.nomor} 
-                                        value={opsi.nomor}
+                                        onClick={() => setTotalGradeB(counttotalgradeb + 1)}
                                         sx={{
                                                 m: 1,
                                                 width: '15rem',
                                                 height: '4rem',
+                                                borderRadius: 3,
+                                                background: "#ffc400"
                                             }}
                                     >
                                         <Grid
                                           container
                                           spacing={0}
                                           direction="row"
-                                          justifyContent="space-between"
+                                          justifyContent="flex-start"
                                           alignItems="center"
                                           alignContent="center"
                                           wrap="wrap"
@@ -425,19 +459,35 @@ const InspectApp = () => {
                                             }}
                                         >
                                             <Box
-                                                justifyContent= 'center'
-                                                alignItems= 'center'
                                                 sx={{
                                                     width: '2.5rem',
                                                     height: '2.5rem',
                                                     mr: 1,
-                                                    background: '#000',
+                                                    background: '#fffeee',
                                                     borderRadius: 2,
                                                 }}
                                             >
-                                                {opsi.nomor}
+                                                <Grid
+                                                  container
+                                                  spacing={0}
+                                                  direction="row"
+                                                  justifyContent="center"
+                                                  alignItems="center"
+                                                  alignContent="center"
+                                                  wrap="nowrap"
+                                                  sx={{p: 0.5}}
+                                                  
+                                                >
+                                                    <Grid item>
+                                                        <Typography variant="h5" color="initial">
+                                                            {opsi.nomor}
+                                                        </Typography>
+
+                                                    </Grid>
+                                                </Grid>
                                             </Box>
-                                            <Typography variant="button" color="initial">
+                                            <Divider orientation="vertical" variant="middle" flexItem sx={{mr: 1}} />
+                                            <Typography variant="button" color="#000" sx={{fontWeight: 600}}>
                                                 {opsi.label}
                                             </Typography>
                                         </Grid>
