@@ -1,0 +1,13 @@
+GET http://localhost:5000/passes
+
+###
+
+POST http://localhost:5000/passes
+
+Content-Type: application/json;
+{
+    "line": "Line 1",
+    "status": "Passed",
+    "code": "OK",
+    "qty": 1
+}

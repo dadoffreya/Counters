@@ -7,7 +7,7 @@ const Passed = dbase.define('rft_main',{
     line: DataTypes.STRING,
     status: DataTypes.STRING,
     code: DataTypes.STRING,
-    qty: DataTypes.INTEGER,
+    qty: DataTypes.INTEGER
 },{
     freezeTableName:true
 });

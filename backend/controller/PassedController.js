@@ -1,6 +1,6 @@
 import Passed from "../models/PassedModel.js";
 
-export const getPassed = async(req, res) => {
+export const getPassed = async(req, res) =>{
     try {
         const response = await Passed.findAll();
         res.status(200).json(response);
@@ -9,10 +9,10 @@ export const getPassed = async(req, res) => {
     }
 }
 
-export const addPassed = async(req, res) => {
+export const addPassed = async(req, res) =>{
     try {
-        await Passed.create();
-        res.status(201).json({msg: "1 Record Added!🥰"});
+        await Passed.create(req.body);
+        res.status(201).json(req.body);
     } catch (error) {
         console.log(error.message);
     }
