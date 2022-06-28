@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import Navbar from '../Navbar';
 import Clock from 'react-live-clock';
 // import Container from '@mui/material/Container';
@@ -10,8 +11,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-
-
 
 const tombol = [
     {
@@ -33,6 +32,34 @@ const InspectApp = () => {
     const [counttotalgradeb, setTotalGradeB] = useState(0);
     const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
     const rftRatemath = Math.round(rftRate);
+    const [linenumber, setLineNumber] = useState("Line 1");
+
+    // POST OK VALUE
+    const lineHandler = (event) => {
+        setLineNumber(event.target.value);
+      };
+    const okstatus = "Passed";
+    const okcode = "OK";
+    const qty = 1;
+    const addOK = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:5000/passes",{
+                "line": linenumber,
+                "status": okstatus,
+                "code": okcode,
+                "qty": qty
+            });
+            console.log({linenumber, okstatus, okcode, qty});
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
+    const getData = async ()=>{
+        const response = await axios.get("http://localhost:5000/passes");
+        console.log(response.data);
+    }
 
   return (
     <div>
@@ -77,8 +104,8 @@ const InspectApp = () => {
                         <TextField
                             id="outline-basic"
                             label="Line Number"
-                            value='Value'
-                        //   onChange={}
+                            value={linenumber}
+                            onChange={lineHandler}
                             variant="standard"
                             size='small'
                             wrap
@@ -405,8 +432,8 @@ const InspectApp = () => {
                                     }}
                                 >
                                     <Button 
-                                        variant="contained" 
-                                        onClick={() => setTotalGradeA(counttotalgradea + 1)}
+                                        variant="contained"
+                                        onClick={addOK}
                                         sx={{
                                             width: '100%',
                                             height: '100%',
