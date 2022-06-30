@@ -33,11 +33,14 @@ const InspectApp = () => {
     const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
     const rftRatemath = Math.round(rftRate);
     const [linenumber, setLineNumber] = useState("Line 1");
-    const [defectcode, setDefectCode] = useState(null);
+    const [defectcode, setDefectCode] = useState("");
 
     // POST OK VALUE
     const lineHandler = (event) => {
         setLineNumber(event.target.value);
+      };
+    const codeHandler = (event) => {
+        setDefectCode(event.target.value);
       };
     const okstatus = "Passed";
     const okcode = "OK";
@@ -56,25 +59,21 @@ const InspectApp = () => {
             console.log(error);
         }
     };
-    const addDefect = async (e) => {
-        setDefectCode();
-        e.preventDefault();
+
+    const addDefect = async (event) => {
+        event.preventDefault();
+        setDefectCode(event.target.value);
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
                 "status": "Defect",
-                "code": e.target.value,
+                "code": event.target.value,
                 "qty": qty
             });
         } catch (error) {
             console.log(error);
         }
     };
-
-    // const getData = async ()=>{
-    //     const response = await axios.get("http://localhost:5000/passes");
-    //     console.log(response.data);
-    // }
 
   return (
     <div>
@@ -240,6 +239,7 @@ const InspectApp = () => {
                                         }}
                                     >
                                         {counttotalgradea}
+                                        {defectcode}
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -506,7 +506,7 @@ const InspectApp = () => {
                                     <Button 
                                         variant="contained" 
                                         key={opsi.nomor} 
-                                        value={defectcode}
+                                        value={"Issue X"}
                                         onClick={addDefect}
                                         sx={{
                                                 m: 1,
