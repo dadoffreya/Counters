@@ -54,7 +54,6 @@ const InspectApp = () => {
                 "code": okcode,
                 "qty": qty
             });
-            console.log({linenumber, okstatus, okcode, qty});
         } catch (error) {
             console.log(error);
         }
@@ -62,7 +61,6 @@ const InspectApp = () => {
 
     const addDefect = async (event) => {
         event.preventDefault();
-        setDefectCode(event.target.value);
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
@@ -506,7 +504,7 @@ const InspectApp = () => {
                                     <Button 
                                         variant="contained" 
                                         key={opsi.nomor} 
-                                        value={"Issue X"}
+                                        value={opsi.label}
                                         onClick={addDefect}
                                         sx={{
                                                 m: 1,
