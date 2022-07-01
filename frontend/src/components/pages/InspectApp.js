@@ -522,8 +522,8 @@ const InspectApp = () => {
                                         value={opsi.code}
                                         onClick={addDefect}
                                         sx={{
-                                                m: 1,
-                                                width: '22rem',
+                                                m: 0.25,
+                                                width: '19.5rem',
                                                 height: '4rem',
                                                 borderRadius: 3,
                                                 background: "#ffc400"
@@ -571,7 +571,7 @@ const InspectApp = () => {
                                                 </Grid>
                                             </Box>
                                             <Divider orientation="vertical" variant="middle" flexItem sx={{mr: 1}} />
-                                            <Typography variant="button" color="#000" sx={{fontWeight: 600}}>
+                                            <Typography variant="caption" color="#000" sx={{fontWeight: 600}} >
                                                 {opsi.label}
                                             </Typography>
                                         </Grid>
