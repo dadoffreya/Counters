@@ -65,7 +65,7 @@ const InspectApp = () => {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
                 "status": "Defect",
-                "code": event.target.value,
+                "code": event.currentTarget.value,
                 "qty": qty
             });
         } catch (error) {
