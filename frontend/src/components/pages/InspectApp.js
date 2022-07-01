@@ -15,15 +15,21 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 const InspectApp = () => {
     // const [counttotalgradea, setTotalGradeA] = useState(0);
     // const [counttotalgradeb, setTotalGradeB] = useState(0);
-    // const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
+    // const rftRate = gradea / (gradea + gradeb) * 100;
     // const rftRatemath = Math.round(rftRate);
     const [linenumber, setLineNumber] = useState("Line 1");
     const [showissues, setIssues] = useState([]);
+    const [gradea, setGradea] = useState(null);
+    const [gradeb, setGradeb] = useState(null);
 
     useEffect(() => {
         getIssues();
+        getGradeA();
+        getGradeB();
       }, []);
-      
+
+    const rftRate = gradea / (gradea + gradeb) * 100;
+    const rftRatemath = Math.round(rftRate);  
     const okstatus = "Passed";
     const okcode = "OK";
     const qty = 1;
@@ -38,10 +44,12 @@ const InspectApp = () => {
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
-                "status": okstatus,
+                "flagstat": okstatus,
                 "code": okcode,
                 "qty": qty
             });
+            getGradeA();
+            console.log(gradea);
         } catch (error) {
             console.log(error);
         }
@@ -53,10 +61,11 @@ const InspectApp = () => {
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
-                "status": "Defect",
+                "flagstat": "Defect",
                 "code": event.currentTarget.value,
                 "qty": qty
             });
+            getGradeB();
             console.log(showissues);
         } catch (error) {
             console.log(error);
@@ -67,6 +76,18 @@ const InspectApp = () => {
     const getIssues = async () => {
         const response = await axios.get("http://localhost:5000/rft/issues");
         setIssues(response.data);
+    };
+
+    // GET COUNT GRADE OK
+    const getGradeA = async () => {
+        const response = await axios.get("http://localhost:5000/rft/countok");
+        setGradea(response.data);
+    };
+
+    // GET COUNT DEFECT
+    const getGradeB = async () => {
+        const response = await axios.get("http://localhost:5000/rft/countdef");
+        setGradeb(response.data);
     };
     
   return (
@@ -232,7 +253,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        Total OK
+                                        {gradea}
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -274,7 +295,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        Total Defect
+                                        {gradeb}
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -337,7 +358,7 @@ const InspectApp = () => {
                                         fontWeight: 700
                                     }}
                                 >
-                                    Persentase%
+                                    {rftRatemath}%
                                 </Typography>
                             </Grid>
                             </Box>
