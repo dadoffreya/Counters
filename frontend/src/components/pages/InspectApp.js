@@ -285,7 +285,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        B Grade
+                                        Defect
                                     </Typography>
                                     <Typography 
                                         variant="h4" 
