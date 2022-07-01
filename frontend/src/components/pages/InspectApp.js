@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Navbar from '../Navbar';
 import Clock from 'react-live-clock';
@@ -37,6 +37,11 @@ const InspectApp = () => {
     const rftRatemath = Math.round(rftRate);
     const [linenumber, setLineNumber] = useState("Line 1");
     const [defectcode, setDefectCode] = useState("");
+    const [showissues, setIssues] = useState([]);
+
+    useEffect(() => {
+        getIssues();
+      }, []);
 
     // POST OK VALUE
     const lineHandler = (event) => {
@@ -67,14 +72,21 @@ const InspectApp = () => {
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
-                "status": event.currentTarget.value,
+                "status": "Defect",
                 "code": event.currentTarget.value,
                 "qty": qty
             });
+            console.log(showissues);
         } catch (error) {
             console.log(error);
         }
     };
+
+    const getIssues = async () => {
+        const response = await axios.get("http://localhost:5000/rft/issues");
+        setIssues(response.data);
+    };
+    
 
   return (
     <div>
@@ -503,19 +515,20 @@ const InspectApp = () => {
                         >
                             {/* DEFECT BUTTONS */}
                             <Grid item>
-                                {tombol.map((opsi) => (
+                                {showissues.map((opsi) => (
                                     <Button 
                                         variant="contained" 
-                                        key={opsi.nomor} 
-                                        value={opsi.label}
+                                        key={opsi.id} 
+                                        value={opsi.code}
                                         onClick={addDefect}
                                         sx={{
                                                 m: 1,
-                                                width: '15rem',
+                                                width: '22rem',
                                                 height: '4rem',
                                                 borderRadius: 3,
                                                 background: "#ffc400"
                                             }}
+                                        wrap="wrap"
                                     >
                                         <Grid
                                           container
@@ -551,7 +564,7 @@ const InspectApp = () => {
                                                 >
                                                     <Grid item>
                                                         <Typography variant="h5" color="initial">
-                                                            {opsi.nomor}
+                                                            {opsi.id}
                                                         </Typography>
 
                                                     </Grid>
