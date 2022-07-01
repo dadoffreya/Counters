@@ -15,14 +15,17 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 const tombol = [
     {
         nomor: '1',
+        status: 'Defect',
         label: 'Issue 1'
     },
     {
         nomor: '2',
+        status: 'Defect',
         label: 'Issue 2'
     },
     {
         nomor: '3',
+        status: 'Defect',
         label: 'Issue 3'
     },
 ];
@@ -64,7 +67,7 @@ const InspectApp = () => {
         try {
             await axios.post("http://localhost:5000/passes",{
                 "line": linenumber,
-                "status": "Defect",
+                "status": event.currentTarget.value,
                 "code": event.currentTarget.value,
                 "qty": qty
             });
