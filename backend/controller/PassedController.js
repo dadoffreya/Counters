@@ -17,3 +17,42 @@ export const addPassed = async(req, res) =>{
         console.log(error.message);
     }
 }
+
+export const getOK = async(req, res) =>{
+    try {
+        const response = await Passed.findAll({
+            attributes: {
+                include: [[Sequelize.fn("COUNT", Sequelize.col("status"), "statusCount")]]
+            },
+            where: {
+                status: 'Passed',
+            },
+            raw: true,
+        });
+        res.status(202).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const countOK = async(req, res) =>{
+    try {
+        const response = await Passed.count({
+            where: { flagstat: "Passed"}
+        });
+        res.status(203).json(response);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const countDefect = async(req, res) =>{
+    try {
+        const respon = await Passed.count({
+            where: { flagstat: "Defect"}
+        });
+        res.status(203).json(respon);
+    } catch (error) {
+        console.log(error.message);
+    }
+}

@@ -12,47 +12,27 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
-const tombol = [
-    {
-        nomor: '1',
-        status: 'Defect',
-        label: 'Issue 1'
-    },
-    {
-        nomor: '2',
-        status: 'Defect',
-        label: 'Issue 2'
-    },
-    {
-        nomor: '3',
-        status: 'Defect',
-        label: 'Issue 3'
-    },
-];
-
 const InspectApp = () => {
-    const [counttotalgradea, setTotalGradeA] = useState(0);
-    const [counttotalgradeb, setTotalGradeB] = useState(0);
-    const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
-    const rftRatemath = Math.round(rftRate);
+    // const [counttotalgradea, setTotalGradeA] = useState(0);
+    // const [counttotalgradeb, setTotalGradeB] = useState(0);
+    // const rftRate = counttotalgradea / (counttotalgradea + counttotalgradeb) * 100;
+    // const rftRatemath = Math.round(rftRate);
     const [linenumber, setLineNumber] = useState("Line 1");
-    const [defectcode, setDefectCode] = useState("");
     const [showissues, setIssues] = useState([]);
 
     useEffect(() => {
         getIssues();
       }, []);
+      
+    const okstatus = "Passed";
+    const okcode = "OK";
+    const qty = 1;
 
     // POST OK VALUE
     const lineHandler = (event) => {
         setLineNumber(event.target.value);
       };
-    const codeHandler = (event) => {
-        setDefectCode(event.target.value);
-      };
-    const okstatus = "Passed";
-    const okcode = "OK";
-    const qty = 1;
+    
     const addOK = async (e) => {
         e.preventDefault();
         try {
@@ -67,6 +47,7 @@ const InspectApp = () => {
         }
     };
 
+    // POST DEFECT VALUES
     const addDefect = async (event) => {
         event.preventDefault();
         try {
@@ -82,12 +63,12 @@ const InspectApp = () => {
         }
     };
 
+    // GET MASTER ISSUE
     const getIssues = async () => {
         const response = await axios.get("http://localhost:5000/rft/issues");
         setIssues(response.data);
     };
     
-
   return (
     <div>
         <Navbar />
@@ -251,8 +232,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        {counttotalgradea}
-                                        {defectcode}
+                                        Total OK
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -294,7 +274,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        {counttotalgradeb}
+                                        Total Defect
                                     </Typography>
                                 </Grid>
                             </Box>
@@ -357,7 +337,7 @@ const InspectApp = () => {
                                         fontWeight: 700
                                     }}
                                 >
-                                    {rftRatemath}%
+                                    Persentase%
                                 </Typography>
                             </Grid>
                             </Box>
