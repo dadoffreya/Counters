@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import PassedRoutes from "./routes/PassedRoutes.js"
+import Routes from "./routes/Routes.js"
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(PassedRoutes);
+app.use(Routes);
 
 app.listen(5000, ()=> console.log('Server up and running on port 5000...'));
