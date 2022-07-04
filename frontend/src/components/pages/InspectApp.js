@@ -13,10 +13,6 @@ import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const InspectApp = () => {
-    // const [counttotalgradea, setTotalGradeA] = useState(0);
-    // const [counttotalgradeb, setTotalGradeB] = useState(0);
-    // const rftRate = gradea / (gradea + gradeb) * 100;
-    // const rftRatemath = Math.round(rftRate);
     const [linenumber, setLineNumber] = useState("Line 1");
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
