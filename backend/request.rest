@@ -1,0 +1,22 @@
+GET http://localhost:5000/rft/issues
+
+###
+
+POST http://localhost:5000/passes HTTP/1.1
+Content-Type: application/json
+
+{
+    "line": "Line 1",
+    "status": "Passed",
+    "code": "OK",
+    "qty": 1
+}
+
+###
+POST http://localhost:5000/rft/issues HTTP/1.1
+Content-Type: application/json
+
+{
+    "code"  : "3",
+    "label" : "OVER CEMENT / OVER LEM"
+}

@@ -11,10 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+// import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
+import BackupTableIcon from '@mui/icons-material/BackupTable';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,10 +37,10 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="static" style={{background: 'transparent', boxShadow: 'none'}}>
+      <Container maxWidth="xl" sx={{background: 'linear-gradient(to right, #9442FE, #3378FF)', borderRadius: 3}}>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <BackupTableIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -50,12 +51,12 @@ const Navbar = () => {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            PT. DPS |
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -93,9 +94,12 @@ const Navbar = () => {
               <MenuItem component={Link} to='/app' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>App</Typography>
               </MenuItem>
+              <MenuItem component={Link} to='/inspect' onClick={handleCloseNavMenu}>
+                <Typography textAlign='center'>Inspect</Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <BackupTableIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -112,7 +116,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            DPS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button 
@@ -133,12 +137,21 @@ const Navbar = () => {
             >   
                 App
             </Button>
+            <Button 
+                key='Inspect' 
+                onClick={handleCloseNavMenu} 
+                sx={{ my: 2, color: 'white', display: 'block' }} 
+                component={Link} 
+                to="/inspect" 
+            >   
+                Inspection
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Femy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
