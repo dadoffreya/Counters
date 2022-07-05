@@ -1,4 +1,4 @@
-GET http://localhost:5000/rft/issues
+GET http://localhost:5000/rft/countdef
 
 ###
 
@@ -17,6 +17,31 @@ POST http://localhost:5000/rft/issues HTTP/1.1
 Content-Type: application/json
 
 {
-    "code"  : "3",
-    "label" : "OVER CEMENT / OVER LEM"
+    "code"  : "5",
+    "label" : "LOSE STITCHING / JAHITAN LEPAS"
+}
+
+###
+GET http://localhost:5000/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJhZG1pbiIsImxpbmUiOiJ0ZXN0Iiwicm9sZSI6InJvb3QiLCJpYXQiOjE2NTY5OTAzNTYsImV4cCI6MTY1Njk5MDM3Nn0.PGQKYRklqKdQURsuyXQX5HUQAJTm-iV3z8xBs56LaVw
+
+###
+POST http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "line": "test",
+    "role": "root",
+    "password": "12345",
+    "confPassword": "12345"
+}
+
+###
+POST http://localhost:5000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "12345"
 }
