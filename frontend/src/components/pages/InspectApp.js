@@ -13,6 +13,7 @@ import Divider from '@mui/material/Divider';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const InspectApp = () => {
+    document.body.style.backgroundColor = "#fff";
     const [linenumber, setLineNumber] = useState("Line 1");
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
