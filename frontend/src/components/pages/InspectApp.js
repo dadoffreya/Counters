@@ -26,6 +26,7 @@ const InspectApp = () => {
 
     const rftRate = gradea / (gradea + gradeb) * 100;
     const rftRatemath = Math.round(rftRate);  
+    const totalInspected = gradea + gradeb;
     const okstatus = "Passed";
     const okcode = "OK";
     const qty = 1;
@@ -166,8 +167,8 @@ const InspectApp = () => {
                     >
                         <TextField
                             id="outline-basic"
-                            label="Style"
-                            value='Footwear Style A Colour A'
+                            label="Total Inspected"
+                            value={totalInspected}
                         //   onChange={}
                             variant="standard"
                             size='small'
