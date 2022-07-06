@@ -1,4 +1,6 @@
 import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,29 +12,34 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
 import CardHeader from '@mui/material/CardHeader'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
+import Button from '@mui/material/Button'
 
 const LoginPage = () => {
     document.body.style.background = "linear-gradient(to right, #9442FE, #3378FF)";
-    const [values, setValues] = React.useState({
+    const [username, setUsername] = useState('');
+    const handleUsername = (event) => {
+        setUsername(event.target.value);
+    };
+
+    // const [password1, setPassword1] = useState('');
+    // const handlePass = (event) => {
+    //     setPassword1(event.target.value);
+    // };
+
+    const [password, setPassword] = React.useState({
         password: '',
         showPassword: false,
       });
     
-    const [username, setUsername] = useState(null);
-    
-    const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    const handlePassword = (prop) => (event) => {
+    setPassword({ ...password, [prop]: event.target.value });
     };
 
     const handleClickShowPassword = () => {
-    setValues({
-        ...values,
-        showPassword: !values.showPassword,
+    setPassword({
+        ...password,
+        showPassword: !password.showPassword,
     });
     };
 
@@ -40,15 +47,25 @@ const LoginPage = () => {
     event.preventDefault();
     };
 
-    const useStyles = makeStyles(() => ({
-        title: {
-          color: 'red',
-          margin: 50,
-          padding: 60,
-          fontSize: 300,
+    const [pesan, setPesan] = useState('');
+    const navigate = useNavigate();
+
+    const Auth = async (e) => {
+        e.preventDefault();
+        console.log(username);
+        console.log(password);
+        try {
+            await axios.post('http://localhost:5000/login',{
+                name: username,
+                password: password.password,
+            });
+            navigate("../", { replace: true });
+        } catch (error) {
+            if (error.response) {
+                setPesan(error.response.data.msg);
+            };
         }
-      }));
-      const classes = useStyles();
+    }
     
   return (
     <Grid
@@ -60,47 +77,59 @@ const LoginPage = () => {
       style={{ minHeight: '90vh' }}   
     >
         <Grid item>
-            <Card sx={{ minWidth: 300 }}>
+            <Card sx={{ minWidth: 300,
+                background: 'rgba( 255, 255, 255, 0.3 )',
+                boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+                backdropFilter: "blur(1.5px)",
+                border: '1px solid rgba( 255, 255, 255, 0.18 )',
+             }}>
                 <CardHeader
-                    className={classes.title}
-                    title="Login"
-                    style={{ textAlign: 'center', fontFamily: 'monospace'}} 
+                    title="Login to continue"
+                    style={{ textAlign: 'center', fontFamily: 'monospace', color: '#feeeee'}} 
+                    sx={{mt: 2}}
                 />
-                <Divider/>
-                <CardContent sx={{mt: -3}}>
-                    <div>
-                        <FormControl variant="standard" sx={{m: 1, width: '93%'}}>
-                            <InputLabel>Username</InputLabel>
-                            <Input
-                                id="standard-adornment-username"
-                                type="text"
-                                value={values.password}
-                                onChange={handleChange('password')}
-                            />
-                        </FormControl>
-                    </div>
-                    <div>
-                        <FormControl variant="standard" sx={{m: 1, width: '93%' }}>
-                            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                            <Input
-                                id="standard-adornment-password"
-                                type={values.showPassword ? 'text' : 'password'}
-                                value={values.password}
-                                onChange={handleChange('password')}
+                <CardContent>
+                    <Grid
+                      container
+                      spacing={0}
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      alignContent="center"
+                    >
+                        <TextField
+                            label="Username"
+                            id="textfield-username"
+                            sx={{ m: 1, width: '30ch' }}
+                            value={username}
+                            onChange={handleUsername}
+                        />
+                        <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={password.showPassword ? 'text' : 'password'}
+                                value={password.password}
+                                onChange={handlePassword('password')}
+                                label="Password"
                                 endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
                                     >
-                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                    {password.showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>
                                 }
                             />
                         </FormControl>
-                    </div>
+                        <Button variant="contained" color="primary" sx={{mt: 1}} size="large" onClick={Auth}>
+                          Login
+                        </Button>
+                    </Grid>
                 </CardContent>
             </Card>            
         </Grid>
