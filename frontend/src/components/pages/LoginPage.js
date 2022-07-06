@@ -14,18 +14,13 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CardHeader from '@mui/material/CardHeader'
 import Button from '@mui/material/Button'
+import FormHelperText from '@mui/material/FormHelperText';
 
-const LoginPage = () => {
-    document.body.style.background = "linear-gradient(to right, #9442FE, #3378FF)";
+const LoginPage = () => {  
     const [username, setUsername] = useState('');
     const handleUsername = (event) => {
         setUsername(event.target.value);
     };
-
-    // const [password1, setPassword1] = useState('');
-    // const handlePass = (event) => {
-    //     setPassword1(event.target.value);
-    // };
 
     const [password, setPassword] = React.useState({
         password: '',
@@ -103,6 +98,7 @@ const LoginPage = () => {
                             sx={{ m: 1, width: '30ch' }}
                             value={username}
                             onChange={handleUsername}
+                            helperText=""
                         />
                         <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -125,10 +121,14 @@ const LoginPage = () => {
                                 </InputAdornment>
                                 }
                             />
+                            <FormHelperText id="outlined-weight-helper-text">{pesan}</FormHelperText>
                         </FormControl>
                         <Button variant="contained" color="primary" sx={{mt: 1}} size="large" onClick={Auth}>
                           Login
                         </Button>
+                        {/* <Button variant="contained" color="primary" sx={{mt: 1}} size="large" onClick={() => setBgcolor("#282c34")}>
+                          Change Background
+                        </Button> */}
                     </Grid>
                 </CardContent>
             </Card>            
