@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import Navbar from '../Navbar';
 import Clock from 'react-live-clock';
-// import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -14,12 +15,16 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const InspectApp = () => {
     document.body.style.backgroundColor = "#fff";
-    const [linenumber, setLineNumber] = useState("Line 1");
+    const navigate = useNavigate();
+    const [token, setToken] = useState('');
+    const [expire, setExpire] = useState('');
+    const [linenumber, setLineNumber] = useState("");
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
     const [gradeb, setGradeb] = useState(null);
 
     useEffect(() => {
+        refreshToken();
         getIssues();
         getGradeA();
         getGradeB();
@@ -32,11 +37,40 @@ const InspectApp = () => {
     const okcode = "OK";
     const qty = 1;
 
+    // REFRESH TOKEN FUNCTION
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/token');
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setLineNumber(decoded.line);
+            setExpire(decoded.exp);
+        } catch (error) {
+            if (error.response) {
+                // navigate("../", { replace: true });
+                console.log(error);
+            }
+        }
+    }
+
+    const axiosJWT = axios.create();
+
+    axiosJWT.interceptors.request.use(async (config) => {
+        const currentDate = new Date();
+        if (expire * 1000 < currentDate.getTime()) {
+            const response = await axios.get('http://localhost:5000/token');
+            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setLineNumber(decoded.line);
+            setExpire(decoded.exp);
+        }
+        return config;
+    }, (error) => {
+        return Promise.reject(error);
+    });
+
     // POST OK VALUE
-    const lineHandler = (event) => {
-        setLineNumber(event.target.value);
-      };
-    
     const addOK = async (e) => {
         e.preventDefault();
         try {
@@ -62,6 +96,10 @@ const InspectApp = () => {
                 "flagstat": "Defect",
                 "code": event.currentTarget.value,
                 "qty": qty
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
             getGradeB();
             console.log(showissues);
@@ -87,6 +125,8 @@ const InspectApp = () => {
         const response = await axios.get("http://localhost:5000/rft/countdef");
         setGradeb(response.data);
     };
+
+    
     
   return (
     <div>
@@ -132,7 +172,7 @@ const InspectApp = () => {
                             id="outline-basic"
                             label="Line Number"
                             value={linenumber}
-                            onChange={lineHandler}
+                            // onChange={lineHandler}
                             variant="standard"
                             size='small'
                             wrap

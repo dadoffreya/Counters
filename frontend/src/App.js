@@ -6,7 +6,7 @@ import InspectApp from './components/pages/InspectApp';
 import LoginPage from './components/pages/LoginPage';
 
 function App() {
-  const [bgcolor, setBgcolor] = useState("#9c27b0")
+  const [bgcolor, setBgcolor] = useState("linear-gradient(to right, #9442FE, #3378FF)")
   document.body.style.background = bgcolor;
   return (
 
