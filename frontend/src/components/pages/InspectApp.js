@@ -28,6 +28,7 @@ const InspectApp = () => {
         getIssues();
         getGradeA();
         getGradeB();
+        // eslint-disable-next-line
       }, []);
 
     const rftRate = gradea / (gradea + gradeb) * 100;
@@ -47,7 +48,7 @@ const InspectApp = () => {
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
-                // navigate("../", { replace: true });
+                navigate("../login");
                 console.log(error);
             }
         }

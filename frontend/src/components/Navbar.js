@@ -1,4 +1,6 @@
 import * as React from 'react';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,9 +17,16 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import BackupTableIcon from '@mui/icons-material/BackupTable';
 
-const settings = ['Profile', 'Logout'];
-
 const Navbar = () => {
+  const navigate = useNavigate();
+  const Logout = async () => {
+    try {
+      await axios.delete('http://localhost:5000/logout');
+      navigate("../login", { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -170,11 +179,12 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={Logout}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
