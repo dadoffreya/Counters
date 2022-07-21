@@ -150,7 +150,7 @@ const Navbar = () => {
                 key='Inspect' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
+                component={Link}
                 to="/inspect" 
             >   
                 Inspection

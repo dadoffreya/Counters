@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize";
 
-const dbase = new Sequelize('RFT_DB', 'root','PTdpsNGAWI0301!@#',{
-    host: '192.168.2.253',
+const dbase = new Sequelize('dms', 'root','',{
+    host: 'localhost',
     dialect: 'mysql'
 });
 

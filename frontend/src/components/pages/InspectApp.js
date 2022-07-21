@@ -23,20 +23,24 @@ const InspectApp = () => {
     const [gradea, setGradea] = useState(null);
     const [gradeb, setGradeb] = useState(null);
 
-    useEffect(() => {
-        refreshToken();
-        getIssues();
-        getGradeA();
-        getGradeB();
-        // eslint-disable-next-line
-      }, []);
-
     const rftRate = gradea / (gradea + gradeb) * 100;
     const rftRatemath = Math.round(rftRate);  
     const totalInspected = gradea + gradeb;
     const okstatus = "Passed";
     const okcode = "OK";
     const qty = 1;
+
+    useEffect(() => {
+        getIssues();
+        getGradeA();
+        getGradeB();
+        // eslint-disable-next-line
+      }, []);
+
+    useEffect(() => {
+        refreshToken();
+        // eslint-disable-next-line
+    }, []);
 
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
@@ -127,8 +131,7 @@ const InspectApp = () => {
         setGradeb(response.data);
     };
 
-    
-    
+        
   return (
     <div>
         <Navbar />
@@ -169,7 +172,7 @@ const InspectApp = () => {
                             borderRadius: 3,
                         }}
                     >
-                        <TextField
+                        {/* <TextField
                             id="outline-basic"
                             label="Line Number"
                             value={linenumber}
@@ -191,7 +194,8 @@ const InspectApp = () => {
                                 fontWeight: 500,
                                 }
                             }}
-                        />
+                        /> */}
+                        <h2>{linenumber}</h2>
                     </Card>
 
                     {/* Style input box */}
