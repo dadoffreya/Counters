@@ -31,16 +31,12 @@ const InspectApp = () => {
     const qty = 1;
 
     useEffect(() => {
+        refreshToken();
         getIssues();
         getGradeA();
         getGradeB();
         // eslint-disable-next-line
       }, []);
-
-    useEffect(() => {
-        refreshToken();
-        // eslint-disable-next-line
-    }, []);
 
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
