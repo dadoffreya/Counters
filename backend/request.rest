@@ -1,4 +1,4 @@
-GET http://localhost:5000/rft/issues
+GET http://localhost:5000/rft/countdef
 
 ###
 
@@ -17,6 +17,66 @@ POST http://localhost:5000/rft/issues HTTP/1.1
 Content-Type: application/json
 
 {
-    "code"  : "3",
-    "label" : "OVER CEMENT / OVER LEM"
+    "code"  : "5",
+    "label" : "LOSE STITCHING / JAHITAN LEPAS"
 }
+
+###
+GET http://localhost:5000/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJhZG1pbiIsImxpbmUiOiJ0ZXN0Iiwicm9sZSI6InJvb3QiLCJpYXQiOjE2NTg4MTk1NjUsImV4cCI6MTY1ODgxOTU4MH0.bt34yXN9QN76Y8_BpQts0XBzXvBDScc4EWMV1HvrUjE
+###
+POST http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "line": "test",
+    "role": "root",
+    "password": "12345",
+    "confPassword": "12345"
+}
+
+###
+POST http://localhost:5000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "12345"
+}
+
+###
+DELETE http://localhost:5000/logout HTTP/1.1
+
+###
+GET http://localhost:5000/users HTTP/1.1
+
+###
+GET http://localhost:5000/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsIm5hbWUiOiJhZG1pbjIiLCJlbWFpbCI6ImVtYWlsMkBkcHMuY29tIiwiaWF0IjoxNjU4ODk0OTk0LCJleHAiOjE2NTg4OTUwMTR9.FC2b4Cx6PiK6tDq8B_2oyY1NJv0jeW2355aCIt4fnWw
+
+###
+POST http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "firman",
+    "email": "firman@dps.com",
+    "password": "1234567",
+    "confPassword": "123456"
+}
+
+###
+POST http://localhost:5000/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "email2@dps.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:5000/token HTTP/1.1
+
+###
+DELETE http://localhost:5000/logout HTTP/1.1

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+// import jwt_decode from "jwt-decode";
 import Navbar from '../Navbar';
 import Clock from 'react-live-clock';
 // import Container from '@mui/material/Container';
@@ -17,6 +18,24 @@ const InspectApp = () => {
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
     const [gradeb, setGradeb] = useState(null);
+    // const [name, setName] = useState('');
+    // const [token, setToken] = useState('');
+
+    // useEffect(() => {
+    //     refreshToken();
+    // },[]);
+
+    // const refreshToken = async() => {
+    //     try {
+    //         const response = await axios.get('http://localhost:5000/token');
+    //         setToken(response.data.accessToken);
+    //         console.log(decoded);
+    //         const decoded = jwt_decode(response.data.accessToken);
+    //         console.log(decoded);
+    //     } catch (error) {
+            
+    //     }
+    // }
 
     useEffect(() => {
         getIssues();
@@ -128,12 +147,13 @@ const InspectApp = () => {
                     >
                         <TextField
                             id="outline-basic"
-                            label="Line Number"
+                            label="Welcome back ..."
                             value={linenumber}
                             onChange={lineHandler}
                             variant="standard"
                             size='small'
                             wrap
+                            disabled
                             sx={{
                             width: '22vw', 
                             fontColor: "#FFF",

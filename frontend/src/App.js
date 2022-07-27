@@ -2,12 +2,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import PageApp from './components/pages/PageApp';
 import InspectApp from './components/pages/InspectApp';
+import Login from './components/pages/Login';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/' element={<Login />} />
+        <Route path='/main' element={<MainPage />} />
         <Route path='/app' element={<PageApp />} />
         <Route path='/inspect' element={<InspectApp />} />
       </Routes>

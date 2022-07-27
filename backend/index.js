@@ -4,6 +4,7 @@ import dbase from "./config/Database.js";
 import Routes from "./routes/Routes.js";
 import Users from "./models/UserModel.js";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 dotenv.config();
 const app = express();
 
@@ -15,7 +16,8 @@ try {
     console.error(error);
 }
 
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({ credentials:true, origin:true }));
 app.use(express.json());
 app.use(Routes);
 

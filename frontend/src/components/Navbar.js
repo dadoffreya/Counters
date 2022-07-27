@@ -45,7 +45,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -88,9 +88,9 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem component={Link} to='/' onClick={handleCloseNavMenu}>
+              {/* <MenuItem component={Link} to='/' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>Home</Typography>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem component={Link} to='/app' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>App</Typography>
               </MenuItem>
@@ -119,7 +119,7 @@ const Navbar = () => {
             DPS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button 
+            {/* <Button 
                 key='Home' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
@@ -127,7 +127,7 @@ const Navbar = () => {
                 to="/" 
             >
                 Home
-            </Button>
+            </Button> */}
             <Button 
                 key='App' 
                 onClick={handleCloseNavMenu} 
