@@ -31,7 +31,7 @@ const InspectApp = () => {
     const qty = 1;
 
     useEffect(() => {
-        refreshToken();
+        // refreshToken();
         getIssues();
         getGradeA();
         getGradeB();
@@ -44,8 +44,9 @@ const InspectApp = () => {
             const response = await axios.get('http://localhost:5000/token');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
-            setLineNumber(decoded.line);
-            setExpire(decoded.exp);
+            console.log(decoded);
+            // setLineNumber(decoded.line);
+            // setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
                 navigate("../login");

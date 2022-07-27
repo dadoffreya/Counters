@@ -54,7 +54,7 @@ const LoginPage = () => {
                 name: username,
                 password: password.password,
             });
-            navigate("../app", { replace: true });
+            navigate("../", { replace: true });
         } catch (error) {
             if (error.response) {
                 setPesan(error.response.data.msg);
