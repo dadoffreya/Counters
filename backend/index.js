@@ -16,9 +16,9 @@ try {
     console.error(error);
 }
 
-app.use(cookieParser());
-app.use(cors({ credentials:true, origin:"http://localhost:3000" }));
+app.use(cors({ credentials:true, origin:true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(Routes);
 
 app.listen(5000, ()=> console.log('Server up and running on port 5000...'));

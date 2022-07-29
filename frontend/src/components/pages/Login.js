@@ -44,6 +44,7 @@ const Login = () => {
 
     const [pesan, setPesan] = useState('');
     const navigate = useNavigate();
+    // const datalogin = {email: email, password: password}
 
     const Auth = async (e) => {
         e.preventDefault();
@@ -51,8 +52,16 @@ const Login = () => {
             await axios.post("http://localhost:5000/login",{
                 email: email,
                 password: password
-            }, { withCredentials: true});
-            navigate("../main", { replace: true });
+            });
+            // await fetch("http://localhost:5000/login",{
+            //     method: "POST",
+            //     credentials: "include",
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(datalogin)
+            // });
+            // navigate("../main", { replace: true });
         } catch (error) {
             if (error.response) {
                 setPesan(error.response.data.msg);

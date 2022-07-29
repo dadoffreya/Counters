@@ -3,8 +3,10 @@ import MainPage from './components/pages/MainPage';
 import PageApp from './components/pages/PageApp';
 import InspectApp from './components/pages/InspectApp';
 import Login from './components/pages/Login';
+import axios from "axios";
 
 function App() {
+  axios.defaults.withCredentials = true;
   return (
     <BrowserRouter>
       <Routes>
