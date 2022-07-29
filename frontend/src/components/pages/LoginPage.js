@@ -17,9 +17,9 @@ import Button from '@mui/material/Button'
 import FormHelperText from '@mui/material/FormHelperText';
 
 const LoginPage = () => {  
-    const [username, setUsername] = useState('');
-    const handleUsername = (event) => {
-        setUsername(event.target.value);
+    const [email, setEmail] = useState('');
+    const handleEmail = (event) => {
+        setEmail(event.target.value);
     };
 
     const [password, setPassword] = React.useState({
@@ -49,10 +49,10 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             await axios.post('http://localhost:5000/login',{
-                name: username,
+                email: email,
                 password: password.password,
-            });
-            navigate("../", { replace: true });
+            }, { withCredentials: true});
+            navigate("../main", { replace: true });
         } catch (error) {
             if (error.response) {
                 setPesan(error.response.data.msg);
@@ -94,8 +94,8 @@ const LoginPage = () => {
                             label="Username"
                             id="textfield-username"
                             sx={{ m: 1, width: '30ch' }}
-                            value={username}
-                            onChange={handleUsername}
+                            value={email}
+                            onChange={handleEmail}
                             helperText=""
                         />
                         <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
@@ -136,4 +136,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default LoginPage;

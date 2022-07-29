@@ -14,15 +14,14 @@ export const getUsers = async(req, res) => {
 }
 
 export const SignUp = async(req, res) => {
-    const { name, line, role, password, confPassword } = req.body;
+    const { name, email, password, confPassword } = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirmed Password tidak sesuai"});
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
     try {
         await Users.create({
             name: name,
-            line: line,
-            role: role,
+            email: email,
             password: hashPassword
         });
         res.json({msg: "Sign up succeded"});
@@ -35,7 +34,7 @@ export const Login = async(req, res) => {
     try {
         const user = await Users.findAll({
             where:{
-                name: req.body.name
+                email: req.body.email
             }
         });
         const match = await bcrypt.compare(req.body.password, user[0].password);
@@ -57,7 +56,8 @@ export const Login = async(req, res) => {
         });
         res.cookie('refreshToken', refreshToken,{
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000
+            maxAge: 24 * 60 * 60 * 1000,
+            secure: false
         });
         res.json({ accessToken });
     } catch (error) {

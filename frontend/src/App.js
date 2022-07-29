@@ -12,10 +12,10 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<MainPage />}  />
+        <Route path='/' element={<LoginPage />}  />
         <Route path='/app' element={<PageApp />} onClick={() => setBgcolor("#9c27b0")} />
         <Route path='/inspect' element={<InspectApp />} onClick={() => setBgcolor("#282c34")} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/main' element={<MainPage />} />
       </Routes>
     </BrowserRouter>
     );
