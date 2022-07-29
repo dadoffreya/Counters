@@ -47,8 +47,6 @@ const LoginPage = () => {
 
     const Auth = async (e) => {
         e.preventDefault();
-        console.log(username);
-        console.log(password);
         try {
             await axios.post('http://localhost:5000/login',{
                 name: username,
