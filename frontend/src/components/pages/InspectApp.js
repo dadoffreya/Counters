@@ -19,6 +19,7 @@ const InspectApp = () => {
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
     const [linenumber, setLineNumber] = useState("");
+    const [name, setName] = useState("");
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
     const [gradeb, setGradeb] = useState(null);
@@ -31,7 +32,7 @@ const InspectApp = () => {
     const qty = 1;
 
     useEffect(() => {
-        // refreshToken();
+        refreshToken();
         getIssues();
         getGradeA();
         getGradeB();
@@ -41,12 +42,12 @@ const InspectApp = () => {
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get('http://localhost:5000/token', { withCredentials: true });
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             console.log(decoded);
-            // setLineNumber(decoded.line);
-            // setExpire(decoded.exp);
+            setName(decoded.name);
+            setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
                 navigate("../login");
@@ -137,7 +138,7 @@ const InspectApp = () => {
             direction="row"
             justify="center"
             alignItems="center"
-            wrap="nowrap"
+            wrap= 'false'
         >
             <Card
                 sx={{
@@ -169,14 +170,14 @@ const InspectApp = () => {
                             borderRadius: 3,
                         }}
                     >
-                        {/* <TextField
+                        <TextField
                             id="outline-basic"
-                            label="Line Number"
-                            value={linenumber}
+                            label="Line Number:"
+                            value={name}
                             // onChange={lineHandler}
                             variant="standard"
                             size='small'
-                            wrap
+                            // wrap
                             sx={{
                             width: '22vw', 
                             fontColor: "#FFF",
@@ -184,22 +185,24 @@ const InspectApp = () => {
                                 color: 'white',
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
+                                fontSize: 25,
+                                textAlign: 'center'
                                 },
                             label: { 
                                 color: 'white',
                                 fontFamily: 'monospace',
                                 fontWeight: 500,
+                                textAlign: 'center'
                                 }
                             }}
-                        /> */}
-                        <h2>{linenumber}</h2>
+                        />
                     </Card>
 
                     {/* Style input box */}
                     <Card 
                         sx={{
                             p: 1, 
-                            mb: 0.5,
+                            mb: -1.5,
                             textColor: "#FFF",
                             background: 'rgba( 255, 255, 255, 0.3 )',
                             boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
@@ -222,6 +225,9 @@ const InspectApp = () => {
                                 color: 'white',
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
+                                fontSize: 50,
+                                textAlign: "center",
+                                my: -1
                                 },
                             label: { 
                                 color: 'white',
@@ -237,7 +243,7 @@ const InspectApp = () => {
                         sx={{
                             p: 1,
                             mt: 2,
-                            mb: 2, 
+                            mb: 0.5, 
                             textColor: "#FFF",
                             background: 'rgba( 255, 255, 255, 0.3 )',
                             boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
@@ -252,7 +258,7 @@ const InspectApp = () => {
                             direction="row"
                             justify="center"
                             alignItems="center"
-                            wrap="wrap"
+                            wrap="true"
                         >
                             <Box
                                 sx={{
@@ -262,7 +268,7 @@ const InspectApp = () => {
                                     borderRadius: 3,
                                     backgroundColor: '#4caf50'
                                 }}
-                                wrap='wrap'
+                                wrap='true'
                             >
                                 <Grid
                                     container
@@ -270,7 +276,7 @@ const InspectApp = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center"
-                                    wrap="wrap"
+                                    wrap="true"
                                     sx={{
                                     p: 0.5
                                     }}
@@ -283,7 +289,7 @@ const InspectApp = () => {
                                             fontWeight: 700
                                         }}
                                     >
-                                        A Grade
+                                        Grade A
                                     </Typography>
                                     <Typography 
                                         variant="h4" 
@@ -312,7 +318,7 @@ const InspectApp = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center"
-                                    wrap="wrap"
+                                    wrap="true"
                                     sx={{
                                     p: 0.5
                                     }}
@@ -361,7 +367,7 @@ const InspectApp = () => {
                             direction="row"
                             justifyContent="center"
                             alignItems="center"
-                            wrap="wrap"
+                            wrap="true"
                         >
                             <Box
                             sx={{
@@ -422,7 +428,7 @@ const InspectApp = () => {
                   direction="column"
                   justifyContent="center"
                   alignItems="flex-start"
-                  wrap="wrap"
+                  wrap="true"
                   
                 >   
                 {/* TOP CONTENTS */}
@@ -445,7 +451,7 @@ const InspectApp = () => {
                           direction="row"
                           justifyContent="space-between"
                           alignItems="center"
-                          wrap="nowrap"
+                          wrap="false"
                           sx={{
                             py: 0.5,
                             px: 1
@@ -469,7 +475,7 @@ const InspectApp = () => {
                                       justifyContent="flex-start"
                                       alignItems="center"
                                       alignContent="center"
-                                      wrap="nowrap"
+                                      wrap="false"
                                       sx={{
                                         mt: 1.25,
                                         ml: 1
@@ -518,7 +524,7 @@ const InspectApp = () => {
                                           justifyContent="center"
                                           alignItems="center"
                                           alignContent="center"
-                                          wrap="nowrap"
+                                          wrap="false"
                                           
                                         >
                                             <CheckRoundedIcon style={{fontSize: 80}} />  
@@ -551,7 +557,7 @@ const InspectApp = () => {
                           justifyContent="center"
                           alignContent='center'
                           alignItems="center"
-                          wrap="wrap"
+                          wrap="true"
                           sx={{m: '2%'}}
                         >
                             {/* DEFECT BUTTONS */}
@@ -569,7 +575,7 @@ const InspectApp = () => {
                                                 borderRadius: 3,
                                                 background: "#ffc400"
                                             }}
-                                        wrap="wrap"
+                                        wrap="true"
                                     >
                                         <Grid
                                           container
@@ -578,7 +584,7 @@ const InspectApp = () => {
                                           justifyContent="flex-start"
                                           alignItems="center"
                                           alignContent="center"
-                                          wrap="wrap"
+                                          wrap="true"
                                           sx={{
                                                mt: '0.1rem'
                                             }}
@@ -599,7 +605,7 @@ const InspectApp = () => {
                                                   justifyContent="center"
                                                   alignItems="center"
                                                   alignContent="center"
-                                                  wrap="nowrap"
+                                                  wrap="false"
                                                   sx={{p: 0.5}}
                                                   
                                                 >

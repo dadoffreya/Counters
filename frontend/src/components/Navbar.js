@@ -22,7 +22,7 @@ const Navbar = () => {
   const Logout = async () => {
     try {
       await axios.delete('http://localhost:5000/logout');
-      navigate("../login", { replace: true });
+      navigate("../", { replace: true });
     } catch (error) {
       console.log(error);
     }
