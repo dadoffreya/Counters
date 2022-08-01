@@ -18,8 +18,7 @@ const InspectApp = () => {
     const navigate = useNavigate();
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
-    const [linenumber, setLineNumber] = useState("");
-    const [name, setName] = useState("");
+    const [linenumber, setLineNumber] = useState('');
     const [showissues, setIssues] = useState([]);
     const [gradea, setGradea] = useState(null);
     const [gradeb, setGradeb] = useState(null);
@@ -46,7 +45,7 @@ const InspectApp = () => {
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             console.log(decoded);
-            setName(decoded.name);
+            setLineNumber(decoded.line);
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
@@ -83,6 +82,19 @@ const InspectApp = () => {
                 "code": okcode,
                 "qty": qty
             });
+            // await axios({
+            //     method: 'post',
+            //     url: "http://localhost:5000/passes",
+            //     headers: {
+            //         'Content-Type':'application/json'
+            //       },
+            //     body: {
+            //         "line": linenumber,
+            //         "flagstat": okstatus,
+            //         "code": okcode,
+            //         "qty": qty
+            //     }
+            // })
             getGradeA();
             console.log(gradea);
         } catch (error) {
@@ -119,7 +131,11 @@ const InspectApp = () => {
 
     // GET COUNT GRADE OK
     const getGradeA = async () => {
-        const response = await axios.get("http://localhost:5000/rft/countok");
+        const response = await axios.get("http://localhost:5000/rft/countok",{
+            params: {
+                line: "Line 1"
+            }
+        });
         setGradea(response.data);
     };
 
@@ -173,7 +189,7 @@ const InspectApp = () => {
                         <TextField
                             id="outline-basic"
                             label="Line Number:"
-                            value={name}
+                            value={linenumber}
                             // onChange={lineHandler}
                             variant="standard"
                             size='small'

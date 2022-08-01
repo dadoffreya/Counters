@@ -36,10 +36,14 @@ export const getOK = async(req, res) =>{
 }
 
 export const countOK = async(req, res) =>{
+    const paramsline = req.params.line;
     try {
         const response = await Passed.count({
-            where: { flagstat: "Passed"}
-        });
+            where: { 
+                line: paramsline,
+                flagstat: "Passed"
+                }
+            });
         res.status(203).json(response);
     } catch (error) {
         console.log(error.message);
@@ -49,7 +53,9 @@ export const countOK = async(req, res) =>{
 export const countDefect = async(req, res) =>{
     try {
         const respon = await Passed.count({
-            where: { flagstat: "Defect"}
+            where: { 
+                flagstat: "Defect"
+            }
         });
         res.status(203).json(respon);
     } catch (error) {

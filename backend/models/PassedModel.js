@@ -3,7 +3,7 @@ import dbase from "../config/Database.js";
 
 const {DataTypes} = Sequelize;
 
-const Passed = dbase.define('rft_main',{
+const Passed = dbase.define('inspection',{
     line: DataTypes.STRING,
     flagstat: DataTypes.STRING,
     code: DataTypes.STRING,
