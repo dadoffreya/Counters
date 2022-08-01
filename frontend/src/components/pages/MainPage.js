@@ -17,7 +17,7 @@ const MainPage = () => {
 
   const refreshToken = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/token');
+        const response = await axios.get('http://localhost:5000/token', { withCredentials: true});
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
         setName(decoded.name);
