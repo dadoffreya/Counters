@@ -14,14 +14,15 @@ export const getUsers = async(req, res) => {
 }
 
 export const SignUp = async(req, res) => {
-    const { name, email, password, confPassword } = req.body;
+    const { name, role, line, password, confPassword } = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirmed Password tidak sesuai"});
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
     try {
         await Users.create({
             name: name,
-            email: email,
+            role: role,
+            line: line,
             password: hashPassword
         });
         res.json({msg: "Sign up succeded"});
@@ -34,7 +35,7 @@ export const Login = async(req, res) => {
     try {
         const user = await Users.findAll({
             where:{
-                email: req.body.email
+                name: req.body.name
             }
         });
         const match = await bcrypt.compare(req.body.password, user[0].password);

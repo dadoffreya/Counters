@@ -3,9 +3,10 @@ import dbase from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Users = dbase.define('m_user',{
+const Users = dbase.define('users',{
     name: DataTypes.STRING,
-    email: DataTypes.STRING,
+    role: DataTypes.STRING,
+    line: DataTypes.STRING,
     password: DataTypes.STRING,
     refresh_token: DataTypes.TEXT
 },{
