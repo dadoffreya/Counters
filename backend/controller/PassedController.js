@@ -36,11 +36,11 @@ export const getOK = async(req, res) =>{
 }
 
 export const countOK = async(req, res) =>{
-    const paramsline = req.params.line;
+    const lineparams = req.params.line;
     try {
         const response = await Passed.count({
             where: { 
-                line: paramsline,
+                line: lineparams,
                 flagstat: "Passed"
                 }
             });

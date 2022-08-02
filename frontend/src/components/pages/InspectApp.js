@@ -133,7 +133,7 @@ const InspectApp = () => {
     const getGradeA = async () => {
         const response = await axios.get("http://localhost:5000/rft/countok",{
             params: {
-                line: "Line 1"
+                line: statevalue
             }
         });
         setGradea(response.data);
