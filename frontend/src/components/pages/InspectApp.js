@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Navbar from '../Navbar';
-import Clock from 'react-live-clock';
+// import Clock from 'react-live-clock';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+// import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 const InspectApp = () => {
     document.body.style.backgroundColor = "#fff";
@@ -30,13 +30,14 @@ const InspectApp = () => {
     const okcode = "OK";
     const qty = 1;
 
+
     useEffect(() => {
         refreshToken();
         getIssues();
         getGradeA();
         getGradeB();
         // eslint-disable-next-line
-      }, []);
+      }, [gradea, gradeb, rftRatemath, rftRate]);
 
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
@@ -194,7 +195,7 @@ const InspectApp = () => {
                                 color: 'white',
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
-                                fontSize: 25,
+                                fontSize: 35,
                                 textAlign: 'center'
                                 },
                             label: { 
@@ -275,9 +276,13 @@ const InspectApp = () => {
                                     width: '10vw',
                                     height: '100px',
                                     borderRadius: 3,
-                                    backgroundColor: '#4caf50'
+                                    backgroundColor: '#4caf50',
+                                    '&:hover': {
+                                        backgroundColor: '#4caf50',
+                                        opacity: [0.5, 0.8, 0.7]}
                                 }}
                                 wrap='true'
+                                onClick={addOK}
                             >
                                 <Grid
                                     container
@@ -441,7 +446,7 @@ const InspectApp = () => {
                   
                 >   
                 {/* TOP CONTENTS */}
-                    <Card
+                    {/* <Card
                         sx={{
                             width: '98%',
                             height: '12vh',
@@ -466,8 +471,8 @@ const InspectApp = () => {
                             px: 1
                           }}
                           
-                        >
-                            <Grid item>
+                        > */}
+                            {/* <Grid item>
                                 <Box
                                     sx={{
                                         width: '58vw',
@@ -503,10 +508,10 @@ const InspectApp = () => {
                                         </Typography>
                                     </Grid>
                                 </Box>
-                            </Grid>   
+                            </Grid>    */}
 
                             {/* OK BUTTON */}
-                            <Grid item>
+                            {/* <Grid item>
                                 <Box
                                     sx={{
                                         width: '10vw',
@@ -541,12 +546,12 @@ const InspectApp = () => {
                                     </Button>
                                 
                                 </Box>
-                            </Grid>                                                        
-                        </Grid>
-                    </Card>
+                            </Grid>                                                         */}
+                        {/* </Grid>
+                    </Card> */}
 
                     {/* BOTTOM CONTENTS */}
-                    <Card
+                    {/* <Card
                         sx={{
                             width: '98%',
                             height: '70vh',
@@ -558,15 +563,15 @@ const InspectApp = () => {
                             border: '1px solid rgba( 255, 255, 255, 0.18 )',
                             borderRadius: 3,
                         }}
-                    >
+                    > */}
                         <Grid
                           container
                           spacing={0}
                           direction="row"
-                          justifyContent="center"
-                          alignContent='center'
-                          alignItems="center"
-                          wrap="true"
+                          justifyContent="space-evenly"
+                          alignContent='space-evenly'
+                          alignItems="space-evenly"
+                          wrap="wrap"
                           sx={{m: '2%'}}
                         >
                             {/* DEFECT BUTTONS */}
@@ -579,8 +584,8 @@ const InspectApp = () => {
                                         onClick={addDefect}
                                         sx={{
                                                 m: 0.25,
-                                                width: '19.5rem',
-                                                height: '4rem',
+                                                width: '15rem',
+                                                height: '3.5rem',
                                                 borderRadius: 3,
                                                 background: "#ffc400"
                                             }}
@@ -635,7 +640,7 @@ const InspectApp = () => {
                                 ))}
                             </Grid>
                         </Grid>
-                    </Card>
+                    {/* </Card> */}
                 </Grid>
             </Card>
         </Grid>

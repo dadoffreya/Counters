@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import BackupTableIcon from '@mui/icons-material/BackupTable';
+import Clock from 'react-live-clock';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -155,6 +156,11 @@ const Navbar = () => {
             >   
                 Inspection
             </Button>
+          </Box>
+          <Box sx={{ flexGrow: 0, mr: 2 }}>
+            <Typography variant="h5" sx={{fontFamily: 'monospace'}}>
+              <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Jakarta'} />
+            </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
