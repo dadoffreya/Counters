@@ -82,19 +82,6 @@ const InspectApp = () => {
                 "code": okcode,
                 "qty": qty
             });
-            // await axios({
-            //     method: 'post',
-            //     url: "http://localhost:5000/passes",
-            //     headers: {
-            //         'Content-Type':'application/json'
-            //       },
-            //     body: {
-            //         "line": linenumber,
-            //         "flagstat": okstatus,
-            //         "code": okcode,
-            //         "qty": qty
-            //     }
-            // })
             getGradeA();
             console.log(gradea);
         } catch (error) {
@@ -131,17 +118,23 @@ const InspectApp = () => {
 
     // GET COUNT GRADE OK
     const getGradeA = async () => {
-        const response = await axios.get("http://localhost:5000/rft/countok",{
-            params: {
-                line: statevalue
-            }
-        });
+        const param = {
+            line: linenumber,
+            flagstat: 'Passed'
+        };
+        const queryOK = Object.keys(param).map(key => key + '=' + param[key]).join('&');
+        const response = await axios.get(`http://localhost:5000/rft/countok?${queryOK}`);
         setGradea(response.data);
     };
 
     // GET COUNT DEFECT
     const getGradeB = async () => {
-        const response = await axios.get("http://localhost:5000/rft/countdef");
+        const paramdefect = {
+            line: linenumber,
+            flagstat: 'Defect'
+        };
+        const queryDefect = Object.keys(paramdefect).map(key => key + '=' + paramdefect[key]).join('&');
+        const response = await axios.get(`http://localhost:5000/rft/countdef?${queryDefect}`);
         setGradeb(response.data);
     };
 
