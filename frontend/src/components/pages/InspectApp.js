@@ -572,7 +572,7 @@ const InspectApp = () => {
                           alignContent='space-evenly'
                           alignItems="space-evenly"
                           wrap="wrap"
-                          sx={{m: '2%'}}
+                          sx={{ml: 0.5, mt: 2}}
                         >
                             {/* DEFECT BUTTONS */}
                             <Grid item>
