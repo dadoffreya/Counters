@@ -4,6 +4,7 @@ import { getIssues, addIssues } from "../controller/IssueController.js";
 import { getUsers, SignUp, Login, Logout } from "../controller/UserController.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controller/RefreshToken.js";
+import { chart1 } from "../controller/ChartController.js";
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.get('/token', refreshToken);
 router.post('/users', SignUp);
 router.post('/login', Login);
 router.delete('/logout', Logout);
+router.get('/charts/view1', chart1);
 
 export default router;

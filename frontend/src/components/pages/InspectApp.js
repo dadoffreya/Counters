@@ -50,7 +50,7 @@ const InspectApp = () => {
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
-                navigate("../login");
+                navigate("../");
                 console.log(error);
             }
         }
