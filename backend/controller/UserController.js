@@ -23,6 +23,7 @@ export const SignUp = async(req, res) => {
             name: name,
             role: role,
             line: line,
+            alias: alias,
             password: hashPassword
         });
         res.json({msg: "Sign up succeded"});
@@ -42,8 +43,9 @@ export const Login = async(req, res) => {
         if(!match) return res.status(400).json({msg: "Wrong Password!"});
         const userId = user[0].id;
         const name = user[0].name;
-        const line = user[0].line;
         const role = user[0].role;
+        const line = user[0].line;
+        const alias = user[0].alias;
         const accessToken = jwt.sign({userId, name, line, role}, process.env.ACCESS_TOKEN_SECRET,{
             expiresIn: '20s'
         });

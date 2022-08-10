@@ -17,8 +17,8 @@ POST http://localhost:5000/rft/issues HTTP/1.1
 Content-Type: application/json
 
 {
-    "code"  : "5",
-    "label" : "LOSE STITCHING / JAHITAN LEPAS"
+    "code"  : "31",
+    "label" : "OTHER"
 }
 
 ###
@@ -30,8 +30,8 @@ POST http://localhost:5000/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "admin",
-    "line": "test",
+    "name": "admin3",
+    "line": "Line3",
     "role": "root",
     "password": "12345",
     "confPassword": "12345"
@@ -45,3 +45,6 @@ Content-Type: application/json
     "name": "admin",
     "password": "12345"
 }
+
+###
+GET http://localhost:5000/charts/view1 HTTP/1.1
