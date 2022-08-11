@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 export const getUsers = async(req, res) => {
     try {
         const users = await Users.findAll({
-            attributes:['id','name','line','role']
+            attributes:['id','name', 'alias','line','role']
         });
         res.json(users);
     } catch (error) {
@@ -14,7 +14,7 @@ export const getUsers = async(req, res) => {
 }
 
 export const SignUp = async(req, res) => {
-    const { name, role, line, password, confPassword } = req.body;
+    const { name, role,alias, line, password, confPassword } = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirmed Password tidak sesuai"});
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
@@ -22,8 +22,8 @@ export const SignUp = async(req, res) => {
         await Users.create({
             name: name,
             role: role,
-            line: line,
             alias: alias,
+            line: line,
             password: hashPassword
         });
         res.json({msg: "Sign up succeded"});
@@ -43,13 +43,13 @@ export const Login = async(req, res) => {
         if(!match) return res.status(400).json({msg: "Wrong Password!"});
         const userId = user[0].id;
         const name = user[0].name;
-        const role = user[0].role;
-        const line = user[0].line;
         const alias = user[0].alias;
-        const accessToken = jwt.sign({userId, name, line, role}, process.env.ACCESS_TOKEN_SECRET,{
+        const line = user[0].line;
+        const role = user[0].role;
+        const accessToken = jwt.sign({userId, name, alias, line, role}, process.env.ACCESS_TOKEN_SECRET,{
             expiresIn: '20s'
         });
-        const refreshToken = jwt.sign({userId, name, line, role}, process.env.REFRESH_TOKEN_SECRET,{
+        const refreshToken = jwt.sign({userId, name, alias, line, role}, process.env.REFRESH_TOKEN_SECRET,{
             expiresIn: '1d'
         });
         await Users.update({refresh_token: refreshToken},{

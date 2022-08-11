@@ -55,7 +55,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href=""
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -98,12 +98,6 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem component={Link} to='/' onClick={handleCloseNavMenu}>
-                <Typography textAlign='center'>Home</Typography>
-              </MenuItem>
-              <MenuItem component={Link} to='/app' onClick={handleCloseNavMenu}>
-                <Typography textAlign='center'>App</Typography>
-              </MenuItem>
               <MenuItem component={Link} to='/inspect' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>Inspect</Typography>
               </MenuItem>
@@ -130,24 +124,6 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button 
-                key='Home' 
-                onClick={handleCloseNavMenu} 
-                sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
-                to="/" 
-            >
-                Home
-            </Button>
-            <Button 
-                key='App' 
-                onClick={handleCloseNavMenu} 
-                sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
-                to="/app" 
-            >   
-                App
-            </Button>
-            <Button 
                 key='Inspect' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
@@ -166,7 +142,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Femy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="DPS" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -185,9 +161,6 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
                 <MenuItem onClick={Logout}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>

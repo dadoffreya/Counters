@@ -124,9 +124,6 @@ const LoginPage = () => {
                         <Button variant="contained" color="primary" sx={{mt: 1}} size="large" onClick={Auth}>
                           Login
                         </Button>
-                        {/* <Button variant="contained" color="primary" sx={{mt: 1}} size="large" onClick={() => setBgcolor("#282c34")}>
-                          Change Background
-                        </Button> */}
                     </Grid>
                 </CardContent>
             </Card>            
