@@ -28,7 +28,9 @@ const InspectApp = () => {
     const okstatus = "Passed";
     const okcode = "OK";
     const qty = 1;
-
+    const current = new Date();
+    const date = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}`;
+    const tanggal = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
 
     useEffect(() => {
         refreshToken();
@@ -41,7 +43,7 @@ const InspectApp = () => {
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/token', { withCredentials: true });
+            const response = await axios.get('http://192.168.2.222:5000/token', { withCredentials: true });
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setLineNumber(decoded.line);
@@ -59,7 +61,7 @@ const InspectApp = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get('http://192.168.2.222:5000/token');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -75,11 +77,12 @@ const InspectApp = () => {
     const addOK = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:5000/passes",{
+            await axios.post("http://192.168.2.222:5000/passes",{
                 "line": linenumber,
                 "flagstat": okstatus,
                 "code": okcode,
-                "qty": qty
+                "qty": qty,
+                "tanggal": tanggal
             });
             getGradeA();
         } catch (error) {
@@ -91,11 +94,12 @@ const InspectApp = () => {
     const addDefect = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:5000/passes",{
+            await axios.post("http://192.168.2.222:5000/passes",{
                 "line": linenumber,
                 "flagstat": "Defect",
                 "code": event.currentTarget.value,
-                "qty": qty
+                "qty": qty,
+                "tanggal": tanggal
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -109,7 +113,7 @@ const InspectApp = () => {
 
     // GET MASTER ISSUE
     const getIssues = async () => {
-        const response = await axios.get("http://localhost:5000/rft/issues");
+        const response = await axios.get("http://192.168.2.222:5000/rft/issues");
         setIssues(response.data);
     };
 
@@ -117,10 +121,11 @@ const InspectApp = () => {
     const getGradeA = async () => {
         const param = {
             line: linenumber,
-            flagstat: 'Passed'
+            flagstat: 'Passed',
+            tanggal: tanggal
         };
         const queryOK = Object.keys(param).map(key => key + '=' + param[key]).join('&');
-        const response = await axios.get(`http://localhost:5000/rft/countok?${queryOK}`);
+        const response = await axios.get(`http://192.168.2.222:5000/rft/countok?${queryOK}`);
         setGradea(response.data);
     };
 
@@ -128,10 +133,11 @@ const InspectApp = () => {
     const getGradeB = async () => {
         const paramdefect = {
             line: linenumber,
-            flagstat: 'Defect'
+            flagstat: 'Defect',
+            tanggal: tanggal
         };
         const queryDefect = Object.keys(paramdefect).map(key => key + '=' + paramdefect[key]).join('&');
-        const response = await axios.get(`http://localhost:5000/rft/countdef?${queryDefect}`);
+        const response = await axios.get(`http://192.168.2.222:5000/rft/countdef?${queryDefect}`);
         setGradeb(response.data);
     };
 
@@ -367,9 +373,22 @@ const InspectApp = () => {
                                     }}
                                 >
                                     <Typography
+                                    variant="h4" 
+                                    color="#FFFFFF"
+                                    sx={{
+                                        my: 1,
+                                        fontFamily: 'monospace',
+                                        fontWeight: 700
+                                    }}
+                                
+                                    >
+                                        {date} 
+                                    </Typography>
+                                    <Typography
                                     variant="h5" 
                                     color="#FFFFFF"
                                     sx={{
+                                        my: -1,
                                         fontFamily: 'monospace',
                                         fontWeight: 700
                                     }}
@@ -381,6 +400,7 @@ const InspectApp = () => {
                                         variant="h2" 
                                         color="#FFFFFF"
                                         sx={{
+                                            my: -1,
                                             fontFamily: 'monospace',
                                             fontWeight: 700
                                         }}
@@ -392,6 +412,7 @@ const InspectApp = () => {
                                         variant="h3" 
                                         color="#FFFFFF"
                                         sx={{
+                                            my: -1,
                                             fontFamily: 'monospace',
                                             fontWeight: 700
                                         }}
@@ -402,6 +423,7 @@ const InspectApp = () => {
                                         variant="h1" 
                                         color="#FFFFFF"
                                         sx={{
+                                            my: -1,
                                             fontFamily: 'monospace',
                                             fontWeight: 700
                                         }}

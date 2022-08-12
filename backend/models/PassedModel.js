@@ -7,7 +7,8 @@ const Passed = dbase.define('inspection',{
     line: DataTypes.STRING,
     flagstat: DataTypes.STRING,
     code: DataTypes.STRING,
-    qty: DataTypes.INTEGER
+    qty: DataTypes.INTEGER,
+    tanggal: DataTypes.DATEONLY
 },{
     freezeTableName:true
 });

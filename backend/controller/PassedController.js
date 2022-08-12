@@ -40,7 +40,8 @@ export const countOK = async(req, res) =>{
         const response = await Passed.count({
             where: { 
                 line: req.query.line,
-                flagstat: req.query.flagstat
+                flagstat: req.query.flagstat,
+                tanggal: req.query.tanggal
                 }
             });
         res.status(203).json(response);
@@ -54,7 +55,8 @@ export const countDefect = async(req, res) =>{
         const respon = await Passed.count({
             where: { 
                 line: req.query.line,
-                flagstat: "Defect"
+                flagstat: "Defect",
+                tanggal: req.query.tanggal
             }
         });
         res.status(203).json(respon);
