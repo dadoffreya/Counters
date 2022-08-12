@@ -150,7 +150,7 @@ const InspectApp = () => {
             direction="row"
             justify="center"
             alignItems="center"
-            wrap= 'false'
+            wrap= 'nowrap'
         >
             <Card
                 sx={{
@@ -242,7 +242,7 @@ const InspectApp = () => {
                             direction="row"
                             justify="center"
                             alignItems="center"
-                            wrap="true"
+                            wrap="wrap"
                         >
                             <Box
                                 sx={{
@@ -255,7 +255,7 @@ const InspectApp = () => {
                                         backgroundColor: 'blue',
                                         opacity: [0.5, 0.8, 0.7]}
                                 }}
-                                wrap='true'
+                                wrap='wrap'
                                 onClick={addOK}
                             >
                                 <Grid
@@ -264,7 +264,7 @@ const InspectApp = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center"
-                                    wrap="true"
+                                    wrap="wrap"
                                     sx={{
                                     p: 0.5
                                     }}
@@ -306,7 +306,7 @@ const InspectApp = () => {
                                     direction="column"
                                     justifyContent="center"
                                     alignItems="center"
-                                    wrap="true"
+                                    wrap="wrap"
                                     sx={{
                                     p: 0.5
                                     }}
@@ -452,7 +452,7 @@ const InspectApp = () => {
                   direction="column"
                   justifyContent="center"
                   alignItems="flex-start"
-                  wrap="true"
+                  wrap="wrap"
                   
                 >   
                 
@@ -483,7 +483,7 @@ const InspectApp = () => {
                                                 borderRadius: 3,
                                                 background: "#ffc400"
                                             }}
-                                        wrap="true"
+                                        wrap="wrap"
                                     >
                                         <Grid
                                           container
@@ -492,7 +492,7 @@ const InspectApp = () => {
                                           justifyContent="flex-start"
                                           alignItems="center"
                                           alignContent="center"
-                                          wrap="true"
+                                          wrap="nowrap"
                                           sx={{
                                                mt: '0.1rem'
                                             }}
@@ -513,7 +513,7 @@ const InspectApp = () => {
                                                   justifyContent="center"
                                                   alignItems="center"
                                                   alignContent="center"
-                                                  wrap="false"
+                                                  wrap="nowrap"
                                                   sx={{p: 0.5}}
                                                   
                                                 >
@@ -526,9 +526,20 @@ const InspectApp = () => {
                                                 </Grid>
                                             </Box>
                                             <Divider orientation="vertical" variant="middle" flexItem sx={{mr: 1}} />
-                                            <Typography variant="caption" color="#000" sx={{fontWeight: 600}} >
-                                                {opsi.label}
-                                            </Typography>
+                                            <Grid
+                                                container
+                                                spacing={0}
+                                                direction="column"
+                                                justifyContent="center"
+                                                alignItems="center"
+                                                alignContent="center"
+                                            >
+                                                <Grid item>
+                                                    <Typography variant="caption" color="#000" sx={{fontWeight: 600}} >
+                                                        {opsi.label}
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
                                         </Grid>
                                     </Button>
                                 ))}
