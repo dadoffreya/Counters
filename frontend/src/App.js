@@ -5,7 +5,6 @@ import LoginPage from './components/pages/LoginPage';
 
 function App() {
   const [bgcolor, setBgcolor] = useState("#ffffff");
-  // useState("linear-gradient(to right, #9442FE, #3378FF)")
   document.body.style.background = bgcolor;
   return (
 

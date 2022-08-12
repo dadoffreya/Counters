@@ -61,9 +61,7 @@ const LoginPage = () => {
             };
         }
     }
-
-    const bgimage = '/frontend/public/images/10172.jpg';
-    
+   
   return (
     <Grid
       container
@@ -84,7 +82,6 @@ const LoginPage = () => {
                 sx={{ 
                     width: '50vw',
                     height: '100%',
-                    backgroundColor: 'blue'
                 }}
                 src={require('../pages/asset/10172.jpg')}
             />
