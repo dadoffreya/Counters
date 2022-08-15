@@ -22,7 +22,7 @@ const ChartsPage = () => {
             >
                 <iframe 
                     width="900" 
-                    height="525" 
+                    height="695" 
                     src="https://datastudio.google.com/embed/reporting/5dc4da61-1505-4a7f-af2d-1c983d1810d9/page/7AB0C" 
                     frameborder="10" 
                     allowfullscreen
