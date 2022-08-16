@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LoginPage />}  />
         <Route path='/inspect' element={<InspectApp />} onClick={() => setBgcolor("#282c34")} />
-        <Route path='/charts' element={<ChartsPage />} onClick={() => setBgcolor("#282c34")} />
+        <Route path='/dashboard' element={<ChartsPage />} onClick={() => setBgcolor("#282c34")} />
       </Routes>
     </BrowserRouter>
     );

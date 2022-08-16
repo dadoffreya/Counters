@@ -98,11 +98,11 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              <MenuItem component={Link} to='/dashboard' onClick={handleCloseNavMenu}>
+                <Typography textAlign='center'>Dashboard</Typography>
+              </MenuItem>
               <MenuItem component={Link} to='/inspect' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>Inspect</Typography>
-              </MenuItem>
-              <MenuItem component={Link} to='/charts' onClick={handleCloseNavMenu}>
-                <Typography textAlign='center'>Charts</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -131,18 +131,18 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
                 component={Link}
-                to="/inspect" 
+                to="/dashboard" 
             >   
-                Inspection
+                Dashboard
             </Button>
             <Button 
                 key='Inspect' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
                 component={Link}
-                to="/charts" 
+                to="/inspect" 
             >   
-                Charts
+                Inspection
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0, mr: 2 }}>

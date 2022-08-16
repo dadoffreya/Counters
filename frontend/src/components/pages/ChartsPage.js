@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import RFTchart from './RFTchart';
-
+import TopDefectLine1 from './TopDefectLine1';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -51,54 +51,40 @@ const ChartsPage = () => {
   return (
     <div>
         <Navbar />
-        <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ borderRight: 1, borderColor: 'divider' }}
+        <Grid
+             container
+             spacing={0}
+             direction="row"
+             justifyContent="flex-start"
+             alignItems="flex-start"
+             sx={{
+                mt: 1,
+                p: 0.5
+             }}
         >
-            <Tab label="RFT Charts" {...a11yProps(0)} />
-            <Tab label="Performance Charts" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-            <RFTchart />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-            Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-            Halu
-        </TabPanel>
-        <Grid 
-            container
-            spacing={0}
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            wrap="wrap"
-            sx={{
-            p: 0.5
-            }}
-        >
-            <Grid 
-                item
-            >
-                {/* <iframe 
-                    width="900" 
-                    height="695" 
-                    src="https://datastudio.google.com/embed/reporting/5dc4da61-1505-4a7f-af2d-1c983d1810d9/page/7AB0C" 
-                    frameborder="5" 
-                    allowfullscreen
-                    title="Charts" 
+            <Grid item>
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    sx={{ borderRight: 1, borderColor: 'divider' }}
                 >
-                    RFT Charts
-                </iframe> */}
+                    <Tab label="RFT Charts" {...a11yProps(0)} />
+                    <Tab label="Top Defects" {...a11yProps(1)} />
+                </Tabs>
+            </Grid>
+            <Grid item>
+                <TabPanel value={value} index={0}>
+                    <RFTchart />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <TopDefectLine1 />
+                </TabPanel>
+                
             </Grid>
         </Grid>
-            
     </div>
   )
 }
