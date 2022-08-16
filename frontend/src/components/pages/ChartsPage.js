@@ -68,7 +68,7 @@ const ChartsPage = () => {
                     variant="scrollable"
                     value={value}
                     onChange={handleChange}
-                    aria-label="Vertical tabs example"
+                    aria-label="Vertical tabs"
                     sx={{ borderRight: 1, borderColor: 'divider' }}
                 >
                     <Tab label="Line Performance" {...a11yProps(0)} />
