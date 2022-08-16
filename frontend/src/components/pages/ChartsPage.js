@@ -71,7 +71,7 @@ const ChartsPage = () => {
                     aria-label="Vertical tabs example"
                     sx={{ borderRight: 1, borderColor: 'divider' }}
                 >
-                    <Tab label="RFT Charts" {...a11yProps(0)} />
+                    <Tab label="Line Performance" {...a11yProps(0)} />
                     <Tab label="Top Defects" {...a11yProps(1)} />
                 </Tabs>
             </Grid>
