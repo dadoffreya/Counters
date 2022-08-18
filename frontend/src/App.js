@@ -1,15 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './components/pages/MainPage';
-import PageApp from './components/pages/PageApp';
+import { useState } from 'react';
 import InspectApp from './components/pages/InspectApp';
+import LoginPage from './components/pages/LoginPage';
+import ChartsPage from './components/pages/ChartsPage';
 
 function App() {
+  const [bgcolor, setBgcolor] = useState("#ffffff");
+  document.body.style.background = bgcolor;
   return (
+
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/app' element={<PageApp />} />
-        <Route path='/inspect' element={<InspectApp />} />
+        <Route path='/' element={<LoginPage />}  />
+        <Route path='/inspect' element={<InspectApp />} onClick={() => setBgcolor("#282c34")} />
+        <Route path='/dashboard' element={<ChartsPage />} onClick={() => setBgcolor("#282c34")} />
       </Routes>
     </BrowserRouter>
     );

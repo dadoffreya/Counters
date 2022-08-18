@@ -3,11 +3,12 @@ import dbase from "../config/Database.js";
 
 const {DataTypes} = Sequelize;
 
-const Passed = dbase.define('rft_main',{
+const Passed = dbase.define('inspection',{
     line: DataTypes.STRING,
     flagstat: DataTypes.STRING,
     code: DataTypes.STRING,
-    qty: DataTypes.INTEGER
+    qty: DataTypes.INTEGER,
+    tanggal: DataTypes.DATEONLY
 },{
     freezeTableName:true
 });

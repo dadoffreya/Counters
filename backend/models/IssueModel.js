@@ -3,7 +3,7 @@ import dbase from "../config/Database.js";
 
 const {DataTypes} = Sequelize;
 
-const Issues = dbase.define('rft_m_issue',{
+const Issues = dbase.define('m_issue',{
     code: DataTypes.STRING,
     label: DataTypes.STRING,
 },{

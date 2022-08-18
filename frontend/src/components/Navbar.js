@@ -1,4 +1,6 @@
 import * as React from 'react';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,10 +16,18 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import BackupTableIcon from '@mui/icons-material/BackupTable';
-
-const settings = ['Profile', 'Logout'];
+import Clock from 'react-live-clock';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const Logout = async () => {
+    try {
+      await axios.delete('http://192.168.2.222:5000/logout');
+      navigate("../", { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,7 +55,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href=""
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -88,11 +98,8 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem component={Link} to='/' onClick={handleCloseNavMenu}>
-                <Typography textAlign='center'>Home</Typography>
-              </MenuItem>
-              <MenuItem component={Link} to='/app' onClick={handleCloseNavMenu}>
-                <Typography textAlign='center'>App</Typography>
+              <MenuItem component={Link} to='/dashboard' onClick={handleCloseNavMenu}>
+                <Typography textAlign='center'>Dashboard</Typography>
               </MenuItem>
               <MenuItem component={Link} to='/inspect' onClick={handleCloseNavMenu}>
                 <Typography textAlign='center'>Inspect</Typography>
@@ -120,38 +127,34 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button 
-                key='Home' 
+                key='Inspect' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
-                to="/" 
-            >
-                Home
-            </Button>
-            <Button 
-                key='App' 
-                onClick={handleCloseNavMenu} 
-                sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
-                to="/app" 
+                component={Link}
+                to="/dashboard" 
             >   
-                App
+                Dashboard
             </Button>
             <Button 
                 key='Inspect' 
                 onClick={handleCloseNavMenu} 
                 sx={{ my: 2, color: 'white', display: 'block' }} 
-                component={Link} 
+                component={Link}
                 to="/inspect" 
             >   
                 Inspection
             </Button>
           </Box>
+          <Box sx={{ flexGrow: 0, mr: 2 }}>
+            <Typography variant="h5" sx={{fontFamily: 'monospace'}}>
+              <Clock format={'HH:mm:ss'} ticking={true} timezone={'Asia/Jakarta'} />
+            </Typography>
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Femy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="DPS" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -170,11 +173,9 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={Logout}>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
-              ))}
             </Menu>
           </Box>
         </Toolbar>
