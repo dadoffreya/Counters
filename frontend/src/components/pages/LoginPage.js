@@ -54,7 +54,7 @@ const LoginPage = () => {
                 name: name,
                 password: password.password,
             }, { withCredentials: true});
-            navigate("../inspect", { replace: true });
+            navigate("../dashboard", { replace: true });
         } catch (error) {
             if (error.response) {
                 setPesan(error.response.data.msg);
