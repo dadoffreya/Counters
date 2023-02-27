@@ -50,7 +50,7 @@ const LoginPage = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://192.168.2.222:5000/login',{
+            await axios.post('http://127.0.0.1:5000/login',{
                 name: name,
                 password: password.password,
             }, { withCredentials: true});
