@@ -43,7 +43,7 @@ const InspectApp = () => {
     // REFRESH TOKEN FUNCTION
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5000/token', { withCredentials: true });
+            const response = await axios.get('http://localhost:5011/token', { withCredentials: true });
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setLineNumber(decoded.line);
@@ -61,7 +61,7 @@ const InspectApp = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://127.0.0.1:5000/token');
+            const response = await axios.get('http://localhost:5011/token');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
@@ -77,7 +77,7 @@ const InspectApp = () => {
     const addOK = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:5000/passes",{
+            await axios.post("http://localhost:5011/passes",{
                 "line": linenumber,
                 "flagstat": okstatus,
                 "code": okcode,
@@ -94,7 +94,7 @@ const InspectApp = () => {
     const addDefect = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:5000/passes",{
+            await axios.post("http://localhost:5011/passes",{
                 "line": linenumber,
                 "flagstat": "Defect",
                 "code": event.currentTarget.value,
@@ -113,7 +113,7 @@ const InspectApp = () => {
 
     // GET MASTER ISSUE
     const getIssues = async () => {
-        const response = await axios.get("http://127.0.0.1:5000/rft/issues");
+        const response = await axios.get("http://localhost:5011/rft/issues");
         setIssues(response.data);
     };
 
@@ -125,7 +125,7 @@ const InspectApp = () => {
             tanggal: tanggal
         };
         const queryOK = Object.keys(param).map(key => key + '=' + param[key]).join('&');
-        const response = await axios.get(`http://127.0.0.1:5000/rft/countok?${queryOK}`);
+        const response = await axios.get(`http://localhost:5011/rft/countok?${queryOK}`);
         setGradea(response.data);
     };
 
@@ -137,7 +137,7 @@ const InspectApp = () => {
             tanggal: tanggal
         };
         const queryDefect = Object.keys(paramdefect).map(key => key + '=' + paramdefect[key]).join('&');
-        const response = await axios.get(`http://127.0.0.1:5000/rft/countdef?${queryDefect}`);
+        const response = await axios.get(`http://localhost:5011/rft/countdef?${queryDefect}`);
         setGradeb(response.data);
     };
 
